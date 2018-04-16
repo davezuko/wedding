@@ -1,0 +1,9 @@
+@import '../../node_modules/normalize.css/normalize.css';
+
+:root {
+  --color: #222;
+}
+
+h1 {
+  color: var(--color);
+}
