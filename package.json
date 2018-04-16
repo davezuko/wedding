@@ -7,7 +7,7 @@
     "clean": "rm -rf dist",
     "compile": "parcel build src/index.html",
     "start": "parcel src/index.html --port 3000",
-    "make": "yarn clean && yarn compile"
+    "make": "yarn clean && yarn compile && cp -r public/. dist"
   },
   "browserslist": [
     "last 2 versions"
