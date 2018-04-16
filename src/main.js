@@ -7,11 +7,10 @@ import './styles/main.css'
 const history = createBrowserHistory()
 
 const mountApp = () => {
-  render('', document.body, window.__root__)
-  window.__root__ = render(
-    <App history={history} routes={routes} />,
-    document.body
-  )
+  const root = document.getElementById('root')
+
+  render('', document.body, root.firstChild)
+  render(<App history={history} routes={routes} />, root)
 }
 
 mountApp()

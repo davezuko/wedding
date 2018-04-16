@@ -20,7 +20,6 @@ const mkdirp = pathname => exec(`mkdirp ${pathname}`)
 
 const renderRoute = (route, component) => {
   return Promise.resolve().then(() => {
-    if (route === '/') return
     console.log('rendering ' + route)
     const dest = path.resolve(__dirname, '../dist', `.${route}`)
     return mkdirp(dest).then(() => {
@@ -28,7 +27,10 @@ const renderRoute = (route, component) => {
       const html = render(<App history={history} routes={routes} />)
       return writeFile(
         path.resolve(dest, 'index.html'),
-        TEMPLATE.replace('<body>', '<body>' + html),
+        TEMPLATE.replace(
+          '<div id="root"></div>',
+          `<div id="root">${html}</div>`
+        ),
         'utf8'
       )
     })
