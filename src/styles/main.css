@@ -1,1 +1,6 @@
-@import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+/*
+ * Temporarily import from our local project rather than node_modules because
+ * Bootstrap defines a `browerslist` that is incompatible with newer versions
+ * of autoprefixer.
+ */
+@import '../../public/bootstrap.css';
