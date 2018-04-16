@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist",
-    "compile": "parcel build src/index.html",
+    "compile": "parcel build src/index.html && node --require babel-register bin/make",
     "start": "parcel src/index.html --port 3000",
     "make": "yarn clean && yarn compile && cp -r public/. dist"
   },
@@ -15,12 +15,14 @@
   "dependencies": {
     "bootstrap": "^4.1.0",
     "history": "^4.7.2",
-    "preact": "^8.2.7"
+    "preact": "^8.2.7",
+    "preact-render-to-string": "^3.7.0"
   },
   "devDependencies": {
     "autoprefixer": "^8.3.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-preact": "^1.1.0",
+    "babel-register": "^6.26.0",
     "parcel-bundler": "^1.7.1",
     "postcss-preset-env": "^4.0.0",
     "prettier": "^1.12.0"

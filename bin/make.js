@@ -1,0 +1,42 @@
+import fs from 'fs'
+import path from 'path'
+import { promisify } from 'util'
+import { h } from 'preact'
+import render from 'preact-render-to-string'
+import App from '../src/components/App'
+import routes from '../src/routes'
+import createMemoryHistory from 'history/createMemoryHistory'
+import cp from 'child_process'
+
+const exec = promisify(cp.exec)
+const writeFile = promisify(fs.writeFile)
+
+const TEMPLATE = fs.readFileSync(
+  path.resolve(__dirname, '../dist/index.html'),
+  'utf8'
+)
+
+const mkdirp = pathname => exec(`mkdirp ${pathname}`)
+
+const renderRoute = (route, component) => {
+  return Promise.resolve().then(() => {
+    if (route === '/') return
+    console.log('rendering ' + route)
+    const dest = path.resolve(__dirname, '../dist', `.${route}`)
+    return mkdirp(dest).then(() => {
+      const history = createMemoryHistory({ initialEntries: [route] })
+      const html = render(<App history={history} routes={routes} />)
+      return writeFile(
+        path.resolve(dest, 'index.html'),
+        TEMPLATE.replace('<body>', '<body>' + html),
+        'utf8'
+      )
+    })
+  })
+}
+
+const make = () => {
+  Promise.all([...routes.entries()].map(route => renderRoute(...route)))
+}
+
+make()
