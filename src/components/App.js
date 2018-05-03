@@ -28,6 +28,17 @@ const Navbar = ({ routes }) => (
   </nav>
 )
 
+const Header = () => (
+  <header className="header">
+    <div>
+      <h1 className="title">Jackie &amp; David</h1>
+      <div className="subtitle">
+        <span className="subtitle__content">We're Getting Married</span>
+      </div>
+    </div>
+  </header>
+)
+
 class App extends Component {
   constructor(props, ctx) {
     super(props, ctx)
@@ -63,9 +74,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header>
-          <Navbar />
-        </header>
+        <Header />
         <main className="container">{this.renderCurrentRoute()}</main>
       </div>
     )
