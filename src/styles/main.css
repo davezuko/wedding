@@ -4,3 +4,4 @@
  * of autoprefixer.
  */
 @import '../../public/bootstrap.css';
+@import './home.css';

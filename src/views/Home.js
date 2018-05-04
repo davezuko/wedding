@@ -1,5 +1,4 @@
 import { h, Component } from 'preact'
-import '../styles/home.css'
 
 const SECOND = 1000
 const MINUTE = SECOND * 60
