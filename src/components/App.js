@@ -1,39 +1,19 @@
 import { h, Component } from 'preact'
-import Link from './Link'
-
-const Navbar = ({ routes }) => (
-  <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-    <Link className="navbar-brand" href="/">
-      Home
-    </Link>
-    <div className="collapse navbar-collapse">
-      <ul className="navbar-nav ml-md-auto">
-        <li className="nav-item">
-          <Link href="/about" className="nav-link">
-            About
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link href="/location" className="nav-link">
-            Location
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link href="/registry" className="nav-link">
-            Registry
-          </Link>
-        </li>
-      </ul>
-    </div>
-  </nav>
-)
+import Countdown from './Countdown'
 
 const Header = () => (
   <header className="header">
     <div>
-      <h1 className="title">Jackie &amp; David</h1>
+      <h1 className="title">
+        <small>Join us for the wedding of</small>
+        <span className="name">Jackie Kutcher</span>
+        <span className="and">&amp;</span>
+        <span className="name">David Zukowski</span>
+      </h1>
+      <Countdown />
       <div className="subtitle">
-        <span className="subtitle__content">We're Getting Married</span>
+        <small className="subtitle--desktop">Invitations to come, check back then for more!</small>
+        <small className="subtitle--mobile">on 9/18/18.<br />Invitations to come, check back then for more!</small>
       </div>
     </div>
   </header>
