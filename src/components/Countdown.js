@@ -61,14 +61,11 @@ class Countdown extends Component {
 
     return (
       <div className="countdown">
-        <div className="countdown__background" />
-        <div>
-          <div className="countdown__content">
-            {this.renderUnit('days', days)}
-            {this.renderUnit('hours', hours)}
-            {this.renderUnit('minutes', minutes)}
-            {this.renderUnit('seconds', seconds)}
-          </div>
+        <div className="countdown__content">
+          {this.renderUnit('days', days)}
+          {this.renderUnit('hours', hours)}
+          {this.renderUnit('minutes', minutes)}
+          {this.renderUnit('seconds', seconds)}
         </div>
       </div>
     )

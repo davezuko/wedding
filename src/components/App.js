@@ -1,23 +1,4 @@
 import { h, Component } from 'preact'
-import Countdown from './Countdown'
-
-const Header = () => (
-  <header className="header">
-    <div>
-      <h1 className="title">
-        <small>Join us for the wedding of</small>
-        <span className="name">Jackie Kutcher</span>
-        <span className="and">&amp;</span>
-        <span className="name">David Zukowski</span>
-      </h1>
-      <Countdown />
-      <div className="subtitle">
-        <small className="subtitle--desktop">Invitations to come, check back then for more!</small>
-        <small className="subtitle--mobile">on 9/18/18.<br />Invitations to come, check back then for more!</small>
-      </div>
-    </div>
-  </header>
-)
 
 class App extends Component {
   constructor(props, ctx) {
@@ -54,8 +35,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <main className="container">{this.renderCurrentRoute()}</main>
+        <main>{this.renderCurrentRoute()}</main>
       </div>
     )
   }
