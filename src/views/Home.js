@@ -14,6 +14,7 @@ class Home extends Component {
                 <span className="d-inline-block mr-4 ml-4">&amp;</span>
                 <span className="splash__name">David Zukowski</span>
               </div>
+              <small className="d-block">in Rochester, Michigan</small>
             </h1>
           </header>
           <Countdown />
