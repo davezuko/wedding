@@ -1,4 +1,5 @@
 import { h, Component } from 'preact'
+import Navigation from './Navigation'
 
 class App extends Component {
   constructor(props, ctx) {
@@ -35,7 +36,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        <main>{this.renderCurrentRoute()}</main>
+        <header>
+          <Navigation />
+          <div className="header">
+            <div>
+              <h1 className="header__title">Jackie Kutcher & David Zukowski</h1>
+              <span className="header__subtitle">
+                September 22, 2018 &mdash; Rochester, MI
+              </span>
+            </div>
+          </div>
+        </header>
+        <div className="viewport">
+          <main className="viewport__content">{this.renderCurrentRoute()}</main>
+        </div>
       </div>
     )
   }

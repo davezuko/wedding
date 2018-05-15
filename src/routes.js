@@ -5,7 +5,7 @@ import Registry from './views/Registry'
 
 export default new Map([
   ['/', Home],
-  ['/about', About],
+  ['/about-us', About],
   ['/location', Location],
   ['/registry', Registry],
 ])
