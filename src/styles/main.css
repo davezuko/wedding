@@ -4,7 +4,7 @@
  * of autoprefixer.
  */
 @import '../../public/bootstrap.css';
-@import './home.css';
+@import './shame.css';
 
 :root {
   --primary: #351616;
@@ -25,9 +25,13 @@ html, body {
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
 }
 
+.viewport {
+  position: relative;
+}
+
 .header {
   display: flex;
-  min-height: 500px;
+  min-height: 600px;
   justify-content: center;
   align-items: center;
   background: var(--primary);
@@ -38,7 +42,7 @@ html, body {
 .header__title {
   color: #fff;
   font-family: 'Great Vibes', cursive;
-  font-size: 4rem;
+  font-size: 4.5rem;
   text-shadow: 1px 1px 2px rgba(255,255,255,.6);
   text-align: center;
 }
