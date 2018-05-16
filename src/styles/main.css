@@ -1,18 +1,20 @@
-/*
- * Temporarily import from our local project rather than node_modules because
- * Bootstrap defines a `browerslist` that is incompatible with newer versions
- * of autoprefixer.
- */
-@import '../../public/bootstrap.css';
-@import './shame.css';
+@import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+@import './_base.css';
+@import './_typography.css';
+@import './components/_header.css';
+@import './_shame.css';
 
-:root {
-  --primary: #351616;
-  --primary-light: #fdf7f5;
+html {
+  font-size: 10px;
+  background: var(--primary-light);
 }
 
-html, body {
-  background: var(--primary-light);
+body {
+  font-size: 1.4rem;
+}
+
+.viewport {
+  position: relative;
 }
 
 .viewport__content {
@@ -23,32 +25,4 @@ html, body {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
-}
-
-.viewport {
-  position: relative;
-}
-
-.header {
-  display: flex;
-  min-height: 600px;
-  justify-content: center;
-  align-items: center;
-  background: var(--primary);
-  color: #fff;
-  text-align: center;
-}
-
-.header__title {
-  color: #fff;
-  font-family: 'Great Vibes', cursive;
-  font-size: 4.5rem;
-  text-shadow: 1px 1px 2px rgba(255,255,255,.6);
-  text-align: center;
-}
-
-.header__subtitle {
-  display: block;
-  font-family: 'Dosis', sans-serif;
-  font-size: 2rem;
 }

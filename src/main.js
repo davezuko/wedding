@@ -13,4 +13,10 @@ const mountApp = () => {
   render(<App history={history} routes={routes} />, root)
 }
 
+if (__DEV__) {
+  module.hot.accept(['./routes', './components/App'], () => {
+    mountApp()
+  })
+}
+
 mountApp()

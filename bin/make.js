@@ -8,6 +8,8 @@ import routes from '../src/routes'
 import createMemoryHistory from 'history/createMemoryHistory'
 import cp from 'child_process'
 
+global.__DEV__ = false
+
 const exec = promisify(cp.exec)
 const writeFile = promisify(fs.writeFile)
 

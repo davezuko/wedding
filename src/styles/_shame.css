@@ -1,25 +1,20 @@
 .viewport__title {
-  position: absolute;
-  width: 41%;
-  top: 4rem;
-  left: 39rem;
   font-family: 'Great Vibes', cursive;
   font-family: 'Dosis', sans-serif;
   font-size: 7rem;
   color: var(--primary);
-  border-bottom: 2px solid var(--primary);
 }
 
 .lead-image {
-  display: inline-block;
+  float: left;
   width: 250px;
   height: 250px;
-  margin: -3rem 0 2rem 2rem;
+  margin: -3rem 2rem 2rem 2rem;
   border: 10px solid #fff;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
 }
 
-img {
+.image {
   display: block;
   width: 100%;
 }

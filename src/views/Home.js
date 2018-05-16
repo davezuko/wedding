@@ -6,7 +6,10 @@ class Home extends Component {
     return (
       <div className="home">
         <div className="lead-image">
-          <img src="https://lh5.googleusercontent.com/xMxA6Xz2rccE86I9QTwJM8U27tPhcIaS9Gc7zoCJoU7DVBUwyxqv6WYMaz_4tMJzJ9ZaTBIphSHd2Q47UX8f=w3360-h1860-rw" />
+          <img
+            className="image"
+            src="/images/12798969_10206475088576096_3516247727858246858_n.jpg"
+          />
         </div>
         <h2 className="viewport__title">Home</h2>
         <div className="content">
