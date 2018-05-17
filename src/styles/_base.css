@@ -1,4 +1,7 @@
 :root {
   --primary: #351616;
   --primary-light: #fdf7f5;
+  --body-font: 'Roboto Slab', serif;
+  --title-font: 'Great Vibes', cursive;
+  --heading-font: 'Julius Sans One', sans-serif;
 }

@@ -7,7 +7,7 @@ class Navigation extends Component {
       <nav className="navbar navbar-expand-sm navbar-dark fixed-top">
         <div className="container">
           <Link className="navbar-brand" href="/">
-            Home
+            Jackie & David
           </Link>
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ml-md-auto">

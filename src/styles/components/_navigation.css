@@ -1,0 +1,8 @@
+.navbar {
+  font-size: 2rem;
+  font-family: var(--heading-font);
+}
+
+.navbar-brand {
+  font-size: inherit;
+}

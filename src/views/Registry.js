@@ -2,8 +2,13 @@ import { h, Component } from 'preact'
 
 class Registry extends Component {
   render() {
-    return <h1>Registry</h1>
+    return (
+      <div>
+        <h2 className="view__title">Our Registry</h2>
+      </div>
+    )
   }
 }
+Registry.title = 'Registry'
 
 export default Registry

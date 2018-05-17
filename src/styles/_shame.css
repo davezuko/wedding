@@ -1,3 +1,7 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+}
+
 .viewport__title {
   font-family: 'Great Vibes', cursive;
   font-family: 'Dosis', sans-serif;
@@ -9,7 +13,7 @@
   float: left;
   width: 250px;
   height: 250px;
-  margin: -3rem 2rem 2rem 2rem;
+  margin: 0rem 2rem 2rem 0rem;
   border: 10px solid #fff;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
 }
@@ -19,8 +23,19 @@
   width: 100%;
 }
 
-.content {
-  padding: 0 2rem;
-  font-size: 1.3rem;
-  font-color: #999;
+.nav-link {
+  padding: 0 1rem !important;
+}
+
+.view__title {
+  text-align: center;
+  font-size: 5rem;
+  border-bottom: 1px solid var(--primary);
+  margin: 0 20% 3rem;
+  padding: 0 0 1rem;
+  font-weight: 900;
+}
+
+p {
+  text-indent: 7rem;
 }
