@@ -1,7 +1,24 @@
 import { h, Component } from 'preact'
-import Link from './Link'
+import Link from '../Link'
 
 class Navigation extends Component {
+  componentDidMount() {
+    this.handleScroll = this.handleScroll.bind(this)
+    this.navbar = document.querySelector('.navbar')
+    this.content = document.querySelector('main')
+    // window.addEventListener('scroll', this.handleScroll)
+  }
+
+  componentWillUnmount() {
+    this.navbar = null
+    this.content = null
+    window.removeEventListener(this.handleScroll)
+  }
+
+  handleScroll() {
+    const content = this.content.getBoundingClientRect()
+  }
+
   render() {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark fixed-top">

@@ -5,6 +5,7 @@
   text-align: center;
   background: linear-gradient(to bottom right, #721c24, var(--primary));
 }
+
 .header__title {
   font-size: inherit;
   font-family: var(--title-font);

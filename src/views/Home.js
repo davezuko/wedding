@@ -1,11 +1,11 @@
 import { h, Component } from 'preact'
 import Countdown from '../components/Countdown'
+import ContentContainer from '../components/ContentContainer'
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <h2 className="view__title">Our Story</h2>
         <p>
           Fate brought Jackie and David together in the fall of 2014 in true
           modern day fashion, on the trusty dating app, OkCupid. David had just
