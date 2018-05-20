@@ -11,6 +11,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/main'),
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: '[name].js',
   },
   ...(BUILD_ENV === 'development' && {

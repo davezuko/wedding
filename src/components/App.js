@@ -3,6 +3,14 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import ContentContainer from './ContentContainer'
 
+const normalizeLocation = location =>
+  Object.assign({}, location, {
+    pathname:
+      location.pathname.length > 1
+        ? location.pathname.replace(/\/$/, '')
+        : location.pathname,
+  })
+
 class App extends Component {
   constructor(props, ctx) {
     super(props, ctx)
@@ -16,7 +24,7 @@ class App extends Component {
       router: {
         push: this.props.history.push,
         replace: this.props.history.replace,
-        location: this.props.history.location,
+        location: normalizeLocation(this.props.history.location),
       },
     }
   }
@@ -28,7 +36,8 @@ class App extends Component {
   }
 
   matchRoute(location) {
-    return this.props.routes.get(location.pathname)
+    const { pathname } = normalizeLocation(location)
+    return this.props.routes.get(pathname)
   }
 
   componentDidMount() {
