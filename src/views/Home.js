@@ -1,8 +1,8 @@
-import { h, Component } from 'preact'
+import React from 'react'
 import Countdown from '../components/Countdown'
 import ContentContainer from '../components/ContentContainer'
 
-class Home extends Component {
+class Home extends React.Component {
   render() {
     return (
       <div>

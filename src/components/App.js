@@ -1,32 +1,12 @@
-import { h, Component } from 'preact'
+import React from 'react'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import ContentContainer from './ContentContainer'
+import * as router from '../services/router'
 
-const normalizeLocation = location => ({
-  ...location,
-  pathname:
-    location.pathname.length > 1
-      ? location.pathname.replace(/\/$/, '')
-      : location.pathname,
-})
-
-class App extends Component {
-  constructor(props, ctx) {
-    super(props, ctx)
-    this.state = {
-      route: this.matchRoute(this.props.history.location),
-    }
-  }
-
-  getChildContext() {
-    return {
-      router: {
-        push: this.props.history.push,
-        replace: this.props.history.replace,
-        location: normalizeLocation(this.props.history.location),
-      },
-    }
+class App extends React.Component {
+  state = {
+    route: this.matchRoute(router.getLocation()),
   }
 
   updateTitle() {
@@ -36,13 +16,12 @@ class App extends Component {
   }
 
   matchRoute(location) {
-    const { pathname } = normalizeLocation(location)
-    return this.props.routes.get(pathname)
+    return this.props.routes.get(router.getLocation().pathname)
   }
 
   componentDidMount() {
     this.updateTitle()
-    this._unsubscribeHistory = this.props.history.listen(location => {
+    this._unsubscribeFromHistory = router.subscribe(location => {
       this.setState({ route: this.matchRoute(location) })
     })
   }
@@ -54,13 +33,14 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    this._unsubscribeHistory()
+    this._unsubscribeFromHistory()
   }
 
   render() {
     const { route: CurrentRoute } = this.state
     const { title, subtitle } = CurrentRoute.header
 
+    console.log('rendering!')
     return (
       <div>
         <Header title={title} subtitle={subtitle} />

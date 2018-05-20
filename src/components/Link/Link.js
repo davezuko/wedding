@@ -1,20 +1,16 @@
-import { h, Component } from 'preact'
+import React from 'react'
+import * as router from '../../services/router'
 
-class Link extends Component {
-  constructor(props, ctx) {
-    super(props, ctx)
-    this._handleClick = this._handleClick.bind(this)
-  }
-
-  _handleClick(e) {
+class Link extends React.Component {
+  handleClick = e => {
     e.preventDefault()
-    this.context.router.push(this.props.href)
+    router.push(this.props.href)
   }
 
   render() {
     const { className, children, href } = this.props
     return (
-      <a href={href} className={className} onClick={this._handleClick}>
+      <a href={href} className={className} onClick={this.handleClick}>
         {children}
       </a>
     )

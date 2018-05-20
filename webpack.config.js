@@ -10,7 +10,7 @@ const __DEV__ = BUILD_ENV === 'development'
 
 module.exports = {
   mode: BUILD_ENV,
-  entry: path.resolve(__dirname, 'src/main'),
+  entry: ['babel-polyfill', path.resolve(__dirname, 'src/main')],
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',

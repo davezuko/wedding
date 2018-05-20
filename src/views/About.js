@@ -1,6 +1,6 @@
-import { h, Component } from 'preact'
+import React from 'react'
 
-class About extends Component {
+class About extends React.Component {
   render() {
     return (
       <div className="about">

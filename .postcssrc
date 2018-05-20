@@ -1,6 +1,21 @@
 {
   "plugins": {
     "autoprefixer": {},
-    "postcss-preset-env": {}
+    "postcss-css-variables": {
+      "variables": {
+        "--primary": "#351616",
+        "--primary-light": "#fdf7f5",
+        "--body-font": "'Roboto Slab', serif",
+        "--title-font": "'Great Vibes', cursive",
+        "--heading-font": "'Julius Sans One', sans-serif"
+      }
+    },
+    "postcss-preset-env": {
+      "browserslist": [
+        "last 2 versions",
+        "IE 10",
+        "IE 11"
+      ]
+    }
   }
 }

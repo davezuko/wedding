@@ -1,11 +1,11 @@
-import { h, Component } from 'preact'
+import React from 'react'
 import { Link } from '../Link'
+import * as router from '../../services/router'
 
-const NavItem = ({ href, title }, { router }) => (
+const NavItem = ({ href, title, location = router.getLocation() }) => (
   <li
     className={
-      'nav-item' +
-      (router.location.pathname === href ? ' nav-item--active' : '')
+      'nav-item' + (location.pathname === href ? ' nav-item--active' : '')
     }
   >
     <Link href={href} className="nav-link">
@@ -14,7 +14,7 @@ const NavItem = ({ href, title }, { router }) => (
   </li>
 )
 
-class Navigation extends Component {
+class Navigation extends React.Component {
   render() {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark fixed-top">

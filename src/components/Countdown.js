@@ -1,4 +1,4 @@
-import { h, Component } from 'preact'
+import React from 'react'
 
 const SECOND = 1000
 const MINUTE = SECOND * 60
@@ -8,12 +8,12 @@ const WEEK = DAY * 7
 
 const TARGET = +new Date('2018-09-22T12:00:00')
 
-class Countdown extends Component {
+class Countdown extends React.Component {
   constructor(props, ctx) {
     super(props, ctx)
     this.updateRemainingTime = this.updateRemainingTime.bind(this)
     this.state = {
-      remainingTime: this.getRemainingTime()
+      remainingTime: this.getRemainingTime(),
     }
   }
 
@@ -42,17 +42,17 @@ class Countdown extends Component {
     )
   }
 
-  get remainingTime () {
+  get remainingTime() {
     let { remainingTime } = this.state
     let days = 0
     let hours = 0
     let minutes = 0
     let seconds = 0
 
-    while (DAY <= remainingTime) (days++, remainingTime -= DAY)
-    while (HOUR <= remainingTime) (hours++, remainingTime -= HOUR)
-    while (MINUTE <= remainingTime) (minutes++, remainingTime -= MINUTE)
-    while (SECOND <= remainingTime) (seconds++, remainingTime -= SECOND)
+    while (DAY <= remainingTime) days++, (remainingTime -= DAY)
+    while (HOUR <= remainingTime) hours++, (remainingTime -= HOUR)
+    while (MINUTE <= remainingTime) minutes++, (remainingTime -= MINUTE)
+    while (SECOND <= remainingTime) seconds++, (remainingTime -= SECOND)
     return { days, hours, minutes, seconds }
   }
 

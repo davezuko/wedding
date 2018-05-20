@@ -3,7 +3,7 @@
     ["env", {
       "modules": false
     }],
-    "preact",
+    "react",
     "stage-1"
   ]
 }

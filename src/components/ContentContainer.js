@@ -1,9 +1,7 @@
-import { h, Component } from 'preact'
+import React from 'react'
 
 const ContentContainer = ({ children }) => (
-  <div className="content-container">
-    {children}
-  </div>
+  <div className="content-container">{children}</div>
 )
 
 export default ContentContainer

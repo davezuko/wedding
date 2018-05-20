@@ -1,16 +1,14 @@
-import { h, render } from 'preact'
+import React from 'react'
+import ReactDOM from 'react-dom'
 import App from './components/App'
-import createBrowserHistory from 'history/createBrowserHistory'
 import routes from './routes'
 import './styles/main.css'
-
-const history = createBrowserHistory()
 
 const mountApp = () => {
   const root = document.getElementById('root')
 
-  render('', document.body, root.firstChild)
-  render(<App history={history} routes={routes} />, root)
+  ReactDOM.unmountComponentAtNode(root)
+  ReactDOM.render(<App routes={routes} />, root)
 }
 
 if (__DEV__) {

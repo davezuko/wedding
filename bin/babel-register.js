@@ -6,6 +6,7 @@ require('babel-register')({
         modules: 'commonjs',
       },
     ],
-    'preact',
+    'react',
+    'stage-1',
   ],
 })
