@@ -12,18 +12,23 @@ class Home extends Component {
           finished school at Western Michigan University and moved into his
           first apartment in Birmingham, Michigan. Jackie was a social work
           student at Oakland University and worked as a soccer coach at the
-          time. Not long after they started chatting on OkCupid, David picked
-          Jackie up from her parents house and they went to a local park to eat
-          a Little Ceasers pizza and get to know one another. Jackie was
-          impressed with David’s intelligence and sense of adventure. They
-          quickly realised that they had grown up less than a quarter mile from
-          each other but had never knowingly crossed paths due to the county
-          divide.{' '}
+          time.
+        </p>
+        <p>
+          Not long after they started chatting, David picked Jackie up for their
+          first date they went to a local park to eat a Little Ceasers pizza and
+          get to know each other. Jackie was impressed with David’s intelligence
+          and sense of adventure. They quickly realised that they had grown up
+          less than a quarter mile from each other.
         </p>
       </div>
     )
   }
 }
 Home.title = 'Home'
+Home.header = {
+  title: 'Jackie Kutcher & David Zukowski',
+  subtitle: 'September 22, 2018 — Rochester, MI',
+}
 
 export default Home

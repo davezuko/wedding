@@ -83,7 +83,7 @@ class Registry extends Component {
           Your presence is the only gift that we desire. If you do want to give
           a gift, please keep in mind that while the celebrations are in
           Michigan, we are relocating to Bellevue, WA, and would greatly
-          appreciate if gifts were shipped directly to our home there. Thank
+          appreciate it if gifts were shipped directly to our home there. Thank
           you!
         </p>
         <ul className="list-unstyled d-flex justify-content-center">
@@ -106,5 +106,9 @@ class Registry extends Component {
   }
 }
 Registry.title = 'Registry'
+Registry.header = {
+  title: 'Our Registry',
+  subtitle: "Heads up, we're moving to Washington!",
+}
 
 export default Registry

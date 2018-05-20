@@ -1,24 +1,20 @@
 import { h, Component } from 'preact'
-import Link from '../Link'
+import { Link } from '../Link'
+
+const NavItem = ({ href, title }, { router }) => (
+  <li
+    className={
+      'nav-item' +
+      (router.location.pathname === href ? ' nav-item--active' : '')
+    }
+  >
+    <Link href={href} className="nav-link">
+      {title}
+    </Link>
+  </li>
+)
 
 class Navigation extends Component {
-  componentDidMount() {
-    this.handleScroll = this.handleScroll.bind(this)
-    this.navbar = document.querySelector('.navbar')
-    this.content = document.querySelector('main')
-    // window.addEventListener('scroll', this.handleScroll)
-  }
-
-  componentWillUnmount() {
-    this.navbar = null
-    this.content = null
-    window.removeEventListener(this.handleScroll)
-  }
-
-  handleScroll() {
-    const content = this.content.getBoundingClientRect()
-  }
-
   render() {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark fixed-top">
@@ -33,11 +29,7 @@ class Navigation extends Component {
                 ['/location', 'Location'],
                 ['/registry', 'Registry'],
               ].map(([href, title]) => (
-                <li className="nav-item">
-                  <Link href={href} className="nav-link">
-                    {title}
-                  </Link>
-                </li>
+                <NavItem key={href} href={href} title={title} />
               ))}
             </ul>
           </div>

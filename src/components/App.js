@@ -16,6 +16,7 @@ class App extends Component {
       router: {
         push: this.props.history.push,
         replace: this.props.history.replace,
+        location: this.props.history.location,
       },
     }
   }
@@ -47,19 +48,19 @@ class App extends Component {
     this._unsubscribeHistory()
   }
 
-  renderCurrentRoute() {
-    const { route: RouteComponent } = this.state
-    if (RouteComponent) {
-      return <RouteComponent />
-    }
-  }
-
   render() {
+    const { route: CurrentRoute } = this.state
+    const { title, subtitle } = CurrentRoute.header
+
     return (
       <div>
-        <Header />
+        <Header title={title} subtitle={subtitle} />
         <div className="viewport">
-          <main className="viewport__content">{this.renderCurrentRoute()}</main>
+          <main className="viewport__content">
+            <ContentContainer>
+              <CurrentRoute />
+            </ContentContainer>
+          </main>
         </div>
         <Footer />
       </div>
