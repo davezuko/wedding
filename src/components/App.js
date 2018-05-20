@@ -3,13 +3,13 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import ContentContainer from './ContentContainer'
 
-const normalizeLocation = location =>
-  Object.assign({}, location, {
-    pathname:
-      location.pathname.length > 1
-        ? location.pathname.replace(/\/$/, '')
-        : location.pathname,
-  })
+const normalizeLocation = location => ({
+  ...location,
+  pathname:
+    location.pathname.length > 1
+      ? location.pathname.replace(/\/$/, '')
+      : location.pathname,
+})
 
 class App extends Component {
   constructor(props, ctx) {

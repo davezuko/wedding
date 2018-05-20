@@ -2,13 +2,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font);
 }
 
-.viewport__title {
-  font-family: 'Great Vibes', cursive;
-  font-family: 'Dosis', sans-serif;
-  font-size: 7rem;
-  color: var(--primary);
-}
-
 .image {
   display: block;
   width: 100%;
@@ -16,15 +9,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link {
   padding: 0 1rem !important;
-}
-
-.view__title {
-  text-align: center;
-  font-size: 5rem;
-  border-bottom: 1px solid var(--primary);
-  margin: 0 20% 3rem;
-  padding: 0 0 1rem;
-  font-weight: 900;
 }
 
 p {

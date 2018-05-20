@@ -3,8 +3,10 @@ const webpack = require('webpack')
 const convertToKoaMiddleware = require('koa-connect')
 const historyApiFallback = require('connect-history-api-fallback')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const BUILD_ENV = process.env.NODE_ENV || 'development'
+const __DEV__ = BUILD_ENV === 'development'
 
 module.exports = {
   mode: BUILD_ENV,
@@ -14,7 +16,7 @@ module.exports = {
     publicPath: '/',
     filename: '[name].js',
   },
-  ...(BUILD_ENV === 'development' && {
+  ...(__DEV__ && {
     serve: {
       port: 3000,
       content: path.resolve(__dirname, 'public'),
@@ -35,7 +37,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { importLoaders: 1 } },
           'postcss-loader',
         ],
@@ -49,6 +51,10 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       __DEV__: BUILD_ENV === 'development',
+    }),
+    new MiniCssExtractPlugin({
+      filename: __DEV__ ? '[name].css' : '[name].[hash].css',
+      chunkFilename: __DEV__ ? '[id].css' : '[id].[hash].css',
     }),
   ],
 }
