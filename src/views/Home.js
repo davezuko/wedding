@@ -27,7 +27,11 @@ class Home extends React.Component {
 }
 Home.title = 'Home'
 Home.header = {
-  title: 'Jackie Kutcher & David Zukowski',
+  title: (
+    <span>
+      Jackie Kutcher <span className="and">&</span> David Zukowski
+    </span>
+  ),
   subtitle: 'September 22, 2018 — Rochester, MI',
 }
 

@@ -19,6 +19,24 @@ p {
   padding: 0 8rem;
 }
 
+@media screen and (max-width: 780px) {
+  .header__title {
+    font-size: 5rem;
+  }
+
+  .header__subtitle {
+    font-size: 2rem;
+  }
+
+  .content-container {
+    padding: 0 4rem;
+  }
+
+  header .and {
+    display: block;
+  }
+}
+
 footer {
   padding: 8rem 0;
   color: #fff;
@@ -29,6 +47,7 @@ footer {
 footer p {
   margin: 0;
   opacity: 0.7;
+  text-indent: 0;
 }
 
 .about h2 {
