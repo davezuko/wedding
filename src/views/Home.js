@@ -16,8 +16,8 @@ class Home extends React.Component {
           time.
         </p>
         <p>
-          Not long after they started chatting, David picked Jackie up for their
-          first date. They went to a local park to eat a Little Ceasers pizza and
+          On November 9, 2014, David picked Jackie up for their first date.
+          They went to a local park to eat a Little Ceasers pizza and
           get to know each other. After a few hours of riveting conversation, they 
           headed to downtown Rochester to walk along the river. They quickly realized
           that they had grown up less than a quarter mile from each other.
