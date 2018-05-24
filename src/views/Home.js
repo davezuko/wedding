@@ -11,16 +11,17 @@ class Home extends React.Component {
           Fate brought Jackie and David together in the fall of 2014 in true
           modern day fashion, on the trusty dating app, OkCupid. David had just
           finished school at Western Michigan University and had moved into his
-          first apartment in Birmingham, Michigan. Jackie was a social work
-          student at Oakland University at the time and worked as a soccer coach at the
-          time.
+          first apartment in Birmingham, Michigan. Jackie was a student at
+          Oakland University at the time.
         </p>
         <p>
           On November 9, 2014, David picked Jackie up for their first date.
           They went to a local park to eat a Little Ceasers pizza and
-          get to know each other. After a few hours of riveting conversation, they 
-          headed to downtown Rochester to walk along the river. They quickly realized
-          that they had grown up less than a quarter mile from each other.
+          get to know each other. They quickly realized that they had grown
+          up less than a quarter mile from each other. After a few hours of 
+          riveting conversation, they headed to downtown Rochester to walk 
+          along the river. After several amazing dates, they quickly became 
+          inseparable and began building a life together.
         </p>
       </div>
     )
