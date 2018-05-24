@@ -6,11 +6,11 @@ class location extends React.Component {
       <div>
         <p>
           Ceremony and Reception
-           Saturday, September 22, 2018 at 5:30pm
+           Saturday, September 22, 2018 at five-thirty in the evening
             https://www.greatoakscc.com/ 
             Great Oaks Country Club 
             777 Great Oaks Blvd, Rochester Hills, MI 48307
-            The ceremony will begin at 5:30pm with a cocktail hour, dinner and dancing to follow.
+            The ceremony will begin at five-thirty with a cocktail hour, dinner and dancing to follow.
             Complimentary valet parking provided at venue.
             Dress Code: Cocktail Attire. 
             Please keep in mind that our ceremony is currently scheduled to take place outside.
