@@ -3,6 +3,8 @@
 @import './_typography.css';
 @import './components/_header.css';
 @import './components/_navigation.css';
+@import './components/_footer.css';
+@import './components/_image.css';
 @import './_shame.css';
 
 html {
@@ -30,9 +32,4 @@ body {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
-}
-
-.image {
-  display: block;
-  width: 100%;
 }

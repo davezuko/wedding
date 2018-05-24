@@ -1,18 +1,5 @@
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--heading-font);
-}
-
-.image {
-  display: block;
-  width: 100%;
-}
-
-.nav-link {
+.navding-link {
   padding: 0 1rem !important;
-}
-
-p {
-  text-indent: 5rem;
 }
 
 .content-container {
@@ -37,23 +24,15 @@ p {
   }
 }
 
-footer {
-  padding: 8rem 0;
-  color: #fff;
-  text-align: center;
-  background: linear-gradient(to bottom right, #721c24, var(--primary));
-}
-
-footer p {
-  margin: 0;
-  opacity: 0.7;
-  text-indent: 0;
+.google-map {
+  display: block;
+  margin: 0 auto;
 }
 
 .about h2 {
   margin: 0 0 2rem;
-  font-size: 4rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: bold;
   border-bottom: 1px solid #000;
 }
 
@@ -62,6 +41,6 @@ footer p {
   text-align: right;
 }
 
-.content h2 {
-  font-size: 4rem;
+.venue-map {
+  margin: 0 0 4rem;
 }

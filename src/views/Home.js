@@ -6,21 +6,23 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h2>How We Met</h2>
-        <p>
-          Fate brought Jackie and David together in the fall of 2014 in true
-          modern day fashion, on the trusty dating app, OkCupid. David had just
-          finished school at Western Michigan University and had moved into his
-          first apartment in Birmingham, Michigan. Jackie was a student at
-          Oakland University at the time.
-        </p>
-        <p>
-          On November 9, 2014, David picked Jackie up for their first date.
-          They went to a local park to eat a Little Ceasers pizza and
-          get to know each other. They quickly realized that they had grown
-          up less than a quarter mile from each other. After several amazing 
-          dates, they quickly became inseparable and began building a life together.
-        </p>
+        <h2 className="heading">How We Met</h2>
+        <div className="paragraphs">
+          <p>
+            Fate brought Jackie and David together in the fall of 2014 in true
+            modern day fashion, on the trusty dating app, OkCupid. David had
+            just finished school at Western Michigan University and had moved
+            into his first apartment in Birmingham, Michigan. Jackie was a
+            student at Oakland University at the time.
+          </p>
+          <p>
+            On November 9, 2014, David picked Jackie up for their first date.
+            They went to a local park to eat a Little Ceasers pizza and get to
+            know each other. They quickly realized that they had grown up less
+            than a quarter mile from each other. After several amazing dates,
+            they quickly became inseparable and began building a life together.
+          </p>
+        </div>
       </div>
     )
   }
