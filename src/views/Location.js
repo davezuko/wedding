@@ -5,7 +5,7 @@ class location extends React.Component {
     return (
       <div>
         <p>
-          Ceremony and Reception
+          Ceremony and Reception Details
            Saturday, September 22, 2018 at five-thirty in the evening
             https://www.greatoakscc.com/ 
             Great Oaks Country Club 
