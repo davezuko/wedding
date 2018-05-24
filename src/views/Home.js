@@ -19,8 +19,7 @@ class Home extends React.Component {
           first date. They went to a local park to eat a Little Ceasers pizza and
           get to know each other. After a few hours of riveting conversation, they 
           headed to downtown Rochester to walk along the river. They quickly realized
-          that they had grown up
-          less than a quarter mile from each other.
+          that they had grown up less than a quarter mile from each other.
         </p>
       </div>
     )
