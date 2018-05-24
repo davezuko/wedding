@@ -6,6 +6,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
+        <h2>How We Met</h2>
         <p>
           Fate brought Jackie and David together in the fall of 2014 in true
           modern day fashion, on the trusty dating app, OkCupid. David had just
