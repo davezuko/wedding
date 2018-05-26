@@ -1,43 +1,46 @@
 {
   "name": "wedding",
   "version": "1.0.0",
-  "main": "src/main.js",
+  "main": "views/index.pug",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf dist",
-    "compile": "NODE_ENV=production webpack && node --require ./bin/babel-register bin/make",
-    "start": "NODE_ENV=development webpack-serve",
-    "make": "yarn clean && yarn compile && cp -r public/. dist"
+    "compile": "npm run compile:css && npm run compile:html",
+    "compile:css": "postcss css/main.css -o dist/css/main.css",
+    "compile:html": "pug views --out dist",
+    "make": "rm -rf dist && mkdir dist && npm run compile",
+    "watch:html": "nodemon --exec \"npm run compile:html\" --ext js,pug --ignore dist",
+    "start": "npm run watch:html & npm run compile:css -- --watch"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-import": {},
+      "postcss-cssnext": {},
+      "cssnano": {
+        "autoprefixer": false
+      }
+    }
   },
   "browserslist": [
-    "last 2 versions"
+    "last 2 versions",
+    "IE 10",
+    "IE 11"
   ],
   "dependencies": {
-    "bootstrap": "^4.1.0",
-    "history": "^4.7.2",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "bootstrap": "^4.1.1",
+    "cssnano": "^3.10.0",
+    "postcss": "^6.0.22",
+    "postcss-cli": "^5.0.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.1.0",
+    "pug": "^2.0.3",
+    "pug-cli": "^1.0.0-alpha6"
   },
   "devDependencies": {
-    "autoprefixer": "^8.3.0",
-    "babel-loader": "^7.1.4",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "connect-history-api-fallback": "^1.5.0",
-    "css-loader": "^0.28.11",
-    "html-webpack-plugin": "^3.2.0",
-    "koa-connect": "^2.0.1",
-    "mini-css-extract-plugin": "^0.4.0",
-    "postcss-css-variables": "^0.8.1",
-    "postcss-loader": "^2.1.5",
-    "postcss-preset-env": "^4.0.0",
-    "prettier": "^1.12.0",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.3",
-    "webpack-serve": "^1.0.2"
+    "nodemon": "^1.17.5"
   }
 }
