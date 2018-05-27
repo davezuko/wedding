@@ -16,6 +16,47 @@ mixin our-story()
     p Fate brought Jackie and David together in the fall of 2014 in true modern day fashion, on the trusty dating app OkCupid. David had just finished school at Western Michigan University and moved into his first apartment in Birmingham, Michigan; Jackie was a social work student at Oakland University and worked as a soccer coach.
     p Not long after they started chatting, David picked Jackie up and they went to a local park to eat a Little Ceasers pizza and get to know one another. Jackie was impressed with David’s intelligence and sense of adventure, and David adored Jackie's love of life. That was just the beginning; eventually the two found themselves moving across Michigan, then to Nashville, TN, ultimately settling Bellevue, WA.
 
+mixin wedding-party()
+  +section("Wedding Party")
+    .row
+      .col-12.col-md-6
+        h3(style="font-weight:bold;font-size:3rem") Best Man
+        ul.list-unstyled
+          li Kyle Turco
+      .col-12.col-md-6
+        h3(style="font-weight:bold;font-size:3rem") Maid of Honor
+        ul.list-unstyled
+          li Missy Kutcher
+    hr
+    .row
+      .col-12.col-md-6
+        h3(style="font-weight:bold;font-size:3rem") Groomsmen
+        ul.list-unstyled
+          li Brent Zukowski
+          li Scott Kutcher
+          li Ion Caza
+          li Harry Ho
+          li Levi Thomason
+      .col-12.col-md-6
+        h3(style="font-weight:bold;font-size:3rem") Bridesmaids
+        ul.list-unstyled
+          li Erika Bertrand
+          li Carley Johnston
+          li Amanda Christopher
+          li Olivia Turco
+          li Amanda Powell
+    hr
+    h3(style="font-weight:bold;font-size:3rem") Special Guests
+    p(style="text-indent:0")
+      | Jaxon Jeroue as
+      strong  ring bearer,
+      br
+      | Lilly Jeroue and Violet Thomason as
+      strong  flower girls,
+      br
+      | and Dolly Kutcher as the
+      strong  dog of honor.
+
 //- The Venue
 //- ------------------------------------
 mixin the-venue()
@@ -40,7 +81,7 @@ mixin hotel-fact(label, value)
 
 mixin where-to-stay()
   +section("Where to Stay")
-      .hotel.mb-4
+      .hotel.mb-5
         h3 Royal Park Hotel
         hr
         .row
@@ -50,7 +91,7 @@ mixin where-to-stay()
               +hotel-fact("Address:", "600 E University Dr, Rochester, MI 48307")
               +hotel-fact("Phone:", "(248) 652-2600")
               +hotel-fact("Distance:", "1.3 miles")
-              +hotel-fact("Reservations:", "Mention Kutcher/Zukowski weddding")
+            p.m-0(style="text-indent:0") Mention Kutcher/Zukowski wedding when booking.
           .d-none.d-md-flex.col-md-4
             +google-map("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.0515202499632!2d-83.13102468417357!3d42.68145097916654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824e9b6cae5167f%3A0xbeabaa9552529440!2sRoyal+Park+Hotel!5e0!3m2!1sen!2sus!4v1527301751286")
       .hotel
@@ -65,12 +106,16 @@ mixin where-to-stay()
               +hotel-fact("Address:", "1500 N Opdyke Rd, Auburn Hills, MI 48326")
               +hotel-fact("Phone:", "(248) 363-4550")
               +hotel-fact("Distance:", "6.2 miles")
-              +hotel-fact("Reservations:", "Mention Kutcher/Zukowski wedding")
+            p.m-0(style="text-indent:0")
+              a(href="https://www.crowneplaza.com/redirect?path=hd&brandCode=CP&localeCode=en&regionCode=1&hotelCode=dttah&_PMID=99801505&GPC=KZW&viewfullsite=true")
+                | Click here to book online
+              |  or mention Kutcher/Zukowski wedding when calling.
 
 //- Our Registry
 //- ------------------------------------
 mixin our-registry()
   +section("Our Registry")
+    p Your presence is the only gift that we desire. If you do want to give a gift, please keep in mind that while the celebrations are in Michigan, we are relocating to Bellevue, WA, and would greatly appreciate if gifts were shipped directly to the address provided. Thank you!
     .row
       .col-12
         a.d-block.amazon(href="https://www.amazon.com/wedding/jackie-kutcher-david-zukowski-rochester-september-2018/registry/FG5W937W5X54")
@@ -94,5 +139,6 @@ mixin our-registry()
 block content
   +our-story()
   +the-venue()
+  +wedding-party()
   +where-to-stay()
   +our-registry()
