@@ -127,6 +127,11 @@ img {
   margin: 0 0 5rem;
 }
 
+#our-registry .amazon img {
+  max-width: 100%;
+  width: auto;
+}
+
 #our-registry .row {
   padding: 0 5rem;
 }
