@@ -1,7 +1,13 @@
 :root {
+  /* theme */
   --primary: #351616;
   --primary-light: #fdf7f5;
+
+  /* typography */
   --body-font: 'Raleway', sans-serif;
   --body-color: #444;
   --heading-font: 'Oswald', sans-serif;
+
+  /* breakpoints */
+  --tablet: 76.8rem;
 }
