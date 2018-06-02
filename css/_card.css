@@ -43,19 +43,21 @@
 }
 
 @media screen and (max-width: 768px) {
-  .header {
-    margin: 10vh 0;
-    font-size: 5rem;
-  }
-
   .section {
     margin: 0 auto 4rem;
+    padding: 2rem;
   }
 
   .section__header {
     position: relative;
     right: initial !important;
     left: initial !important;
-    font-size: 5rem;
+    margin: 0 0 1rem;
+    font-size: 4rem;
+  }
+
+  .section__content {
+    padding: 0;
+    font-size: 2rem;
   }
 }
