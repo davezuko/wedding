@@ -2,12 +2,14 @@
   /* theme */
   --primary: #351616;
   --primary-light: #fdf7f5;
+  --red: #fb205d;
+  --green:  #0bcaae;
 
   /* typography */
   --body-font: 'Raleway', sans-serif;
   --body-color: #444;
   --heading-font: 'Oswald', sans-serif;
-
-  /* breakpoints */
-  --tablet: 76.8rem;
 }
+
+@custom-media --mobile (width <= 575px);
+@custom-media --tablet (width <= 768px);

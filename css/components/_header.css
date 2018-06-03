@@ -1,0 +1,28 @@
+.navbar {
+  font-size: 2rem;
+}
+
+.navbar-brand {
+  font-size: 1em;
+}
+
+.header {
+  margin: 20vh 0;
+  font-size: 9rem;
+  font-weight: bold;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 1em;
+  color: #fb205d;
+}
+
+.header__subtitle {
+  font-size: 0.4em;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.body-copy {
+  text-indent: 3rem;
+}
