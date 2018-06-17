@@ -26,3 +26,22 @@ h3 a {
     font-weight: bold;
   }
 }
+
+.photos {
+  margin: 0 -7rem 15vh;
+}
+
+.photos img {
+  border: 1rem solid #fff;
+  box-shadow: 0px 0px 120px 0px rgba(1, 1, 1, 0.12);
+}
+
+@media (--tablet) {
+  .photos {
+    margin: 0;
+  }
+
+  .photos img {
+    margin-bottom: 4rem;
+  }
+}

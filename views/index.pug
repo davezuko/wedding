@@ -17,6 +17,21 @@ mixin our-story()
       p Fate brought Jackie and David together in the fall of 2014 in true modern day fashion: on the trusty dating app OkCupid. David had just finished school at Western Michigan University and moved into his first apartment in Birmingham, Michigan; Jackie was a social work student at Oakland University and worked as a soccer coach.
       p Not long after they started chatting, David picked Jackie up and they went to a local park to eat a Little Ceasers pizza and get to know one another. Jackie was impressed with David’s intelligence and sense of adventure, and David adored Jackie's love of life. That was just the beginning; eventually the two found themselves moving across Michigan, then to Nashville, TN, before finally settling in Bellevue, WA.
 
+
+//- Photos
+//- ------------------------------------
+mixin photos()
+  .photos
+    .row
+      .col-6.col-md-3
+        img.img-fluid(src="/images/broadway.jpg" alt="On Broadway in Nashville, TN" title="On Broadway in Nashville, TN")
+      .col-6.col-md-3
+        img.img-fluid(src="/images/nashville.jpg" alt="Carnton Plantation in Nashville, TN", title="Carnton Plantaion in Nashville, TN")
+      .col-6.col-md-3
+        img.img-fluid(src="/images/wedding.jpg" alt="Attending a wedding in Rochester, MI", title="Attending a wedding in Rochester, MI")
+      .col-6.col-md-3
+        img.img-fluid(src="/images/jackie-graduation.jpg" alt="Jackie graduation with her BSW" title="Jackie graduating with her BSW")
+
 //- Wedding Party
 //- ------------------------------------
 mixin wedding-party()
@@ -128,6 +143,7 @@ mixin our-registry()
 
 block content
   +our-story()
+  +photos()
   +the-venue()
   +wedding-party()
   +where-to-stay()
