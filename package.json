@@ -4,12 +4,9 @@
   "main": "views/index.pug",
   "license": "MIT",
   "scripts": {
-    "compile": "npm run compile:css && npm run compile:html",
-    "compile:css": "postcss css/main.css -o dist/css/main.css",
-    "compile:html": "pug views --out dist",
-    "make": "rm -rf dist && mkdir dist && npm run compile && cp -r public/* dist",
-    "watch:html": "nodemon --exec \"npm run compile:html\" --ext js,pug --ignore dist",
-    "start": "npm run make && npm run watch:html & npm run compile:css -- --watch"
+    "gulp": "gulp --gulpfile ./build/gulpfile.js --cwd .",
+    "make": "yarn gulp make && cp -r public/* dist",
+    "start": "yarn gulp start"
   },
   "prettier": {
     "semi": false,
@@ -33,14 +30,18 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "cssnano": "^3.10.0",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-pug": "^4.0.1",
     "postcss": "^6.0.22",
     "postcss-cli": "^5.0.0",
     "postcss-cssnext": "^3.1.0",
-    "postcss-import": "^11.1.0",
-    "pug": "^2.0.3",
-    "pug-cli": "^1.0.0-alpha6"
+    "postcss-import": "^11.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.17.5"
+    "express": "^4.16.3",
+    "prettier": "^1.13.7"
   }
 }
