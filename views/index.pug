@@ -141,6 +141,24 @@ mixin our-registry()
       a.d-block(href="https://www.potterybarn.com/registry/6h6wtkjgv9/registry-list.html" target="_blank" title="Pottery Barn Registry Link" rel="noreferrer")
         include ../includes/pottery-barn-logo.pug
 
+block header
+  header
+    nav.navbar.navbar-expand-sm.navbar-light
+      .container
+        a.navbar-brand(href="/") Jackie & David
+        .collapse.navbar-collapse
+          ul.navbar-nav.ml-md-auto
+            +nav-item("Our Story", "/#our-story")
+            +nav-item("Venue", "/#the-venue")
+            +nav-item("Registry", "/#our-registry")
+    .header
+      .container.text-center
+        h1.header__title Jackie Kutcher & David Zukowski
+        .header__subtitle
+          span.d-block.d-md-inline-block September 22, 2018
+          span.d-none.d-md-inline-block.ml-3.mr-3 &mdash;
+          span.d-block.d-md-inline-block Rochester, MI
+
 block content
   +our-story()
   +photos()
@@ -148,3 +166,9 @@ block content
   +wedding-party()
   +where-to-stay()
   +our-registry()
+
+block footer
+  footer.container.text-center
+    .row.justify-content-center
+      .col-10
+        p We want to thank everyone for the love, support, and excitement that you have shared with us over the past four years; it is amazing to have such loving family and friends. We love you all and can’t wait to celebrate with you in Michigan.

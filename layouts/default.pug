@@ -30,26 +30,10 @@ html(lang="en")
     meta(name="theme-color", content="#ffffff")
     link(rel="stylesheet" href="/css/main.css")
   body
-    header
-      nav.navbar.navbar-expand-sm.navbar-light
-        .container
-          a.navbar-brand(href="/") Jackie & David
-          .collapse.navbar-collapse
-            ul.navbar-nav.ml-md-auto
-              +nav-item("Our Story", "/#our-story")
-              +nav-item("Venue", "/#the-venue")
-              +nav-item("Registry", "/#our-registry")
-      .header
-        .container.text-center
-          h1.header__title Jackie Kutcher & David Zukowski
-          .header__subtitle
-            span.d-block.d-md-inline-block September 22, 2018
-            span.d-none.d-md-inline-block.ml-3.mr-3 &mdash;
-            span.d-block.d-md-inline-block Rochester, MI
+    block header
     main.container
       block content
-    footer.container.text-center
-      .row.justify-content-center
-        .col-10
-          p We want to thank everyone for the love, support, and excitement that you have shared with us over the past four years; it is amazing to have such loving family and friends. We love you all and can’t wait to celebrate with you in Michigan.
+    block footer
     block scripts
+      if development
+        script(src="/livereload.js?snipver=1")

@@ -5,11 +5,12 @@
   "license": "MIT",
   "scripts": {
     "gulp": "gulp --gulpfile ./build/gulpfile.js --cwd .",
-    "make": "yarn gulp make && cp -r public/* dist",
+    "make": "NODE_ENV=production yarn gulp make && cp -r public/* dist",
     "start": "yarn gulp start"
   },
   "prettier": {
     "semi": false,
+    "bracketSpacing": false,
     "singleQuote": true,
     "trailingComma": "es5"
   },
@@ -28,20 +29,34 @@
     "IE 11"
   ],
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
     "bootstrap": "^4.1.1",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
+    "dotenv": "^6.0.0",
+    "firebase": "^5.2.0",
+    "gaze": "^1.1.3",
     "gulp": "^4.0.0",
+    "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^7.0.1",
     "gulp-pug": "^4.0.1",
     "postcss": "^6.0.22",
-    "postcss-cli": "^5.0.0",
     "postcss-cssnext": "^3.1.0",
-    "postcss-import": "^11.1.0"
+    "postcss-import": "^11.1.0",
+    "uuid": "^3.3.2",
+    "vinyl-named-with-path": "^1.0.0",
+    "vue": "^2.5.16",
+    "vue-loader": "^15.2.4",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.14.0",
+    "webpack-stream": "^4.0.3"
   },
   "devDependencies": {
     "express": "^4.16.3",
-    "prettier": "^1.13.7"
+    "prettier": "^1.13.7",
+    "tiny-lr": "^1.1.1"
   }
 }
