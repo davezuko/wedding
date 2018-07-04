@@ -10,7 +10,7 @@ const paths = {
     dest: 'dist',
   },
   scripts: {
-    src: ['scripts/main.js', 'scripts/**/main.js'],
+    src: ['js/main.js', 'js/**/main.js'],
     dest: 'dist/js',
   },
   styles: {
@@ -76,7 +76,7 @@ function watch() {
 
   const devServer = express()
   devServer.use(express.static('public'))
-  devServer.use(express.static('dist'))
+  devServer.use(express.static('dist', {extensions: ['html']}))
   devServer.use(tinylr.middleware({app: devServer}))
   devServer.listen(3000, () => {
     console.log('Server running at http://localhost:3000')

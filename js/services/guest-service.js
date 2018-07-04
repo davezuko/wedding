@@ -1,5 +1,7 @@
 import firebase from './firebase'
 
+const households = firebase.database().ref('/households')
+
 function parseHouseholds(snapshot) {
   const value = snapshot.val()
   return Object.keys(value).map(id => {
@@ -8,18 +10,11 @@ function parseHouseholds(snapshot) {
 }
 
 export function listHouseholds() {
-  return firebase
-    .database()
-    .ref('/')
-    .once('value')
-    .then(parseHouseholds)
+  return households.once('value').then(parseHouseholds)
 }
 
 export function subscribeToHouseholds(cb) {
-  firebase
-    .database()
-    .ref('/households')
-    .on('value', snapshot => {
-      cb(parseHouseholds(snapshot))
-    })
+  households.on('value', snapshot => {
+    cb(parseHouseholds(snapshot))
+  })
 }

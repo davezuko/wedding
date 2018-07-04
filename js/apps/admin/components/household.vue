@@ -17,34 +17,33 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      id: String,
-      rsvpStatus: String,
-      notes: {
-        type: String,
-        default: '',
-      },
-      guests: Array,
+export default {
+  props: {
+    id: String,
+    rsvpStatus: String,
+    notes: {
+      type: String,
+      default: '',
     },
-    data() {
-      return {
-        editing: false,
-      }
-    },
-    computed: {
-      name() {
-        return this.id.replace('_', ' ')
-      }
-    },
-    methods: {
-      editNote() {
-        this.editing = true
-      },
-      saveNote() {
-        this.editing = false
-      }
+    guests: Array,
+  },
+  data() {
+    return {
+      editing: false,
     }
-  }
+  },
+  computed: {
+    name() {
+      return this.id.replace('_', ' ')
+    },
+  },
+  methods: {
+    editNote() {
+      this.editing = true
+    },
+    saveNote() {
+      this.editing = false
+    },
+  },
+}
 </script>
-

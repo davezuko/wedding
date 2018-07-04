@@ -30,6 +30,15 @@ html(lang="en")
     meta(name="theme-color", content="#ffffff")
     link(rel="stylesheet" href="/css/main.css")
   body
+    nav.navbar.navbar-expand-sm.navbar-light
+      .container
+        a.navbar-brand(href="/") Jackie & David
+        .collapse.navbar-collapse
+          ul.navbar-nav.ml-md-auto
+            +nav-item("Our Story", "/#our-story")
+            +nav-item("Venue", "/#the-venue")
+            +nav-item("Registry", "/#our-registry")
+            +nav-item("RSVP", "/rsvp")
     block header
     main.container
       block content

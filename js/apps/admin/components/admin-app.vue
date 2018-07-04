@@ -29,33 +29,33 @@
 </template>
 
 <script>
-  import * as guestService from '../../../services/guest-service'
-  import household from './household.vue'
+import * as guestService from '../../../services/guest-service'
+import household from './household.vue'
 
-  export default {
-    components: {
-      household,
-    },
-    data() {
-      return {
-        loading: true,
-        households: [],
-        search: '',
-      }
-    },
-    computed: {
-      visibleHouseholds() {
-        const search = this.search.trim().toLowerCase()
-        return this.households.filter(hh => {
-          return hh.guests[0].householdLeaderLastName.toLowerCase().indexOf(search) !== -1
-        })
-      }
-    },
-    mounted() {
-      guestService.subscribeToHouseholds((res) => {
-        this.households = res
-      })
+export default {
+  components: {
+    household,
+  },
+  data() {
+    return {
+      loading: true,
+      households: [],
+      search: '',
     }
-  }
+  },
+  computed: {
+    visibleHouseholds() {
+      const search = this.search.trim().toLowerCase()
+      return this.households.filter(hh => {
+        const {householdLeaderLastName} = hh.guests[0]
+        return householdLeaderLastName.toLowerCase().indexOf(search) !== -1
+      })
+    },
+  },
+  mounted() {
+    guestService.subscribeToHouseholds(res => {
+      this.households = res
+    })
+  },
+}
 </script>
-
