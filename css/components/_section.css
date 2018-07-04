@@ -1,22 +1,17 @@
 .section {
-  position: relative;
-  margin: 0 auto 15vh;
-  padding: 10rem 2rem 2rem;
-  max-width: 70rem;
-  box-shadow: 0px 0px 120px 0px rgba(1, 1, 1, 0.12);
-  border-bottom: 3px solid #000;
+  padding: 6.25rem 1.25rem 1.25rem;
 }
 
 .section__header {
   position: absolute;
-  top: 0rem;
-  left: -5rem;
-  font-size: 10rem;
+  top: 0;
+  left: -3.125rem;
+  font-size: 6.25rem;
 }
 
 .section__content {
-  padding: 4rem;
-  font-size: 2rem;
+  padding: 2.5rem;
+  font-size: 1.25rem;
 }
 
 .section:last-of-type {
@@ -25,7 +20,7 @@
 
 .section:nth-of-type(even) .section__header {
   left: initial;
-  right: -5rem;
+  right: -3.125rem;
   color: var(--green);
 }
 .section:nth-of-type(even) {
@@ -43,7 +38,7 @@
 @media (--tablet) {
   .section {
     margin: 0 auto 4rem;
-    padding: 2rem;
+    padding: 1.25rem;
   }
 
   .section__header {

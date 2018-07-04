@@ -1,15 +1,43 @@
 <template>
-  <div>
-    <section class="section">
-      <h2>RSVP</h2>
+  <div class="rsvp">
+    <section class="section my-card">
+      <h2 class="section__header">Wedding RSVP</h2>
       <div class="section__content">
+        <div class="rsvp-header text-center">
+          <h3>Great Oaks Country Club</h3>
+          <p>
+            777 Great Oaks Blvd<br />
+            Rochester Hills, MI 48307<br />
+            Saturday, September 22, 2018
+          </p>
+          <hr />
+        </div>
+        <form>
+          <div class="row mb-4">
+            <div class="form-group col">
+              <label for="exampleInputEmail1">First Name</label>
+              <input type="texta" class="form-control" placeholder="Your first name" autofocus>
+            </div>
+            <div class="form-group col">
+              <label for="exampleInputEmail1">Last Name</label>
+              <input type="text" class="form-control" placeholder="Your last name">
+            </div>
+          </div>
+          <h3>Will you be attending?</h3>
+          <div class="row mt-3">
+            <div class="col">
+              <button type="button" class="col btn btn-block btn-primary" @click="changeAttendingStatus(true)">Yes</button>
+            </div>
+            <div class="col">
+              <button type="button" class="col btn btn-block btn-outline-secondary mt-0" @click="changeAttendingStatus(false)">No</button>
+            </div>
+          </div>
+          <div v-show="attending" class="mt-5">
+            <hr />
+          </div>
+        </form>
       </div>
     </section>
-    <ul v-if="debug">
-      <li v-for="household in households">
-        {{ household.guests[0].householdLeaderLastName }}
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -22,15 +50,19 @@ export default {
   },
   data() {
     return {
-      debug: true,
+      attending: null,
       households: [],
     }
   },
   mounted() {
     guestService.listHouseholds().then(res => {
-      console.log(res)
       this.households = res
     })
+  },
+  methods: {
+    changeAttendingStatus(status) {
+      this.attending = status
+    },
   },
 }
 </script>

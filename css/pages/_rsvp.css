@@ -1,0 +1,12 @@
+.rsvp {
+  margin-top: 10rem;
+}
+
+.rsvp-header {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.rsvp .section__header {
+  color: var(--green);
+}

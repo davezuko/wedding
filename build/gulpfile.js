@@ -15,6 +15,7 @@ const paths = {
   },
   styles: {
     src: 'css/main.css',
+    watch: 'css/**/*.css',
     dest: 'dist/css',
   },
 }
@@ -47,7 +48,7 @@ function styles() {
   const postcss = require('gulp-postcss')
 
   return gulp
-    .src(paths.styles.src, {since: gulp.lastRun(styles)})
+    .src(paths.styles.src)
     .pipe(plumber())
     .pipe(postcss())
     .pipe(gulp.dest(paths.styles.dest))
@@ -72,7 +73,7 @@ function watch() {
   const tinylr = require('tiny-lr')
 
   gulp.watch(paths.templates.watch, templates)
-  gulp.watch(paths.styles.src, styles)
+  gulp.watch(paths.styles.watch, styles)
 
   const devServer = express()
   devServer.use(express.static('public'))

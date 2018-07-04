@@ -1,14 +1,6 @@
-.navbar {
-  font-size: 2rem;
-}
-
-.navbar-brand {
-  font-size: 1em;
-}
-
 .header {
   margin: 20vh 0;
-  font-size: 9rem;
+  font-size: 5.65rem;
   font-weight: bold;
 }
 
@@ -24,5 +16,5 @@
 }
 
 .body-copy {
-  text-indent: 3rem;
+  text-indent: 2rem;
 }

@@ -4,9 +4,9 @@ mixin google-map(src)
   iframe.d-block.w-100(src=src frameborder="0" style="border:0" allowfullscreen title="Google Map")
 
 mixin section(header)
-  section.section(id=header.replace(/\s+/, '-').toLowerCase())
+  section.my-card.section(id=header.replace(/\s+/, '-').toLowerCase())
     h2.section__header= header
-    .section__content
+    .my-card__content.section__content
       block
 
 //- Our Story
