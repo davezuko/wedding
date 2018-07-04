@@ -12,28 +12,58 @@
           </p>
           <hr />
         </div>
-        <form>
+        <form @submit.prevent="submit">
           <div class="row mb-4">
             <div class="form-group col">
               <label for="exampleInputEmail1">First Name</label>
-              <input type="texta" class="form-control" placeholder="Your first name" autofocus>
+              <input type="texta" class="form-control" placeholder="Your first name" v-model="firstName" autofocus>
             </div>
             <div class="form-group col">
               <label for="exampleInputEmail1">Last Name</label>
-              <input type="text" class="form-control" placeholder="Your last name">
+              <input type="text" class="form-control" placeholder="Your last name" v-model="lastName">
             </div>
           </div>
-          <h3>Will you be attending?</h3>
-          <div class="row mt-3">
-            <div class="col">
-              <button type="button" class="col btn btn-block btn-primary" @click="changeAttendingStatus(true)">Yes</button>
-            </div>
-            <div class="col">
-              <button type="button" class="col btn btn-block btn-outline-secondary mt-0" @click="changeAttendingStatus(false)">No</button>
-            </div>
-          </div>
-          <div v-show="attending" class="mt-5">
+          <div v-if="household">
             <hr />
+            <div class="d-flex">
+              <h3>Your Household</h3>
+              <div class="ml-auto">
+                Attending?
+              </div>
+            </div>
+            <ul>
+              <li v-for="guest in household.guests" class="mb-2">
+                <div class="row">
+                  <span class="col-7">{{ guest.firstName }} {{ guest.lastName }}</span>
+                  <div class="col d-flex">
+                    <button
+                      type="button"
+                      class="btn btn-block btn-outline-primary mr-2"
+                      :class="{active: guest.rsvpStatus === true}"
+                      @click="updateRSVPStatus(guest, true)"
+                    >
+                      Yes
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-block btn-outline-secondary mt-0"
+                      :class="{active: guest.rsvpStatus === false}"
+                      @click="updateRSVPStatus(guest, false)"
+                    >
+                      No
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col ml-auto">
+              <button type="submit" class="btn btn-block btn-primary">
+                Submit
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -45,12 +75,10 @@
 import * as guestService from '../../../services/guest-service'
 
 export default {
-  components: {
-    search: require('./search.vue'),
-  },
   data() {
     return {
-      attending: null,
+      firstName: '',
+      lastName: '',
       households: [],
     }
   },
@@ -62,6 +90,31 @@ export default {
   methods: {
     changeAttendingStatus(status) {
       this.attending = status
+    },
+    updateRSVPStatus(guest, status) {
+      guest.rsvpStatus = status
+    },
+    submit() {
+      alert('debug submit')
+    },
+  },
+  computed: {
+    household() {
+      const firstName = this.firstName.trim().toLowerCase()
+      const lastName = this.lastName.trim().toLowerCase()
+      if (!firstName || !lastName) {
+        return
+      }
+
+      const household = this.households.find(hh => {
+        return hh.guests.find(guest => {
+          return (
+            guest.firstName.toLowerCase().includes(firstName) &&
+            guest.lastName.toLowerCase().includes(lastName)
+          )
+        })
+      })
+      return household
     },
   },
 }
