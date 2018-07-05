@@ -2,7 +2,7 @@ import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
 import parseCSV from 'csv-parse/lib/sync'
-import firebase from '../../js/services/firebase'
+import firebase from '../../js/resources/firebase'
 import {theKnotToFirebaseRecord} from './transforms'
 
 const [, , csvFile] = process.argv

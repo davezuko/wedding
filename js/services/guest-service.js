@@ -1,4 +1,4 @@
-import firebase from './firebase'
+import firebase from '../resources/firebase'
 
 const households = firebase.database().ref('/households')
 
@@ -17,4 +17,11 @@ export function subscribeToHouseholds(cb) {
   households.on('value', snapshot => {
     cb(parseHouseholds(snapshot))
   })
+}
+
+export function saveHousehold(id, value) {
+  return firebase
+    .database()
+    .ref(`/households/${id}`)
+    .set(value)
 }

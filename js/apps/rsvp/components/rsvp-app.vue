@@ -38,17 +38,21 @@
                   <div class="col d-flex">
                     <button
                       type="button"
-                      class="btn btn-block btn-outline-primary mr-2"
-                      :class="{active: guest.rsvpStatus === true}"
-                      @click="updateRSVPStatus(guest, true)"
+                      class="btn btn-block mr-2"
+                      :class="{
+                        active: guest.rsvpStatus === 'Accepted',
+                        'btn-outline-primary': guest.rsvpStatus === 'Accepted',
+                        'btn-outline-secondary': guest.rsvpStatus !== 'Accepted'
+                      }"
+                      @click="updateRSVPStatus(guest, 'Accepted')"
                     >
                       Yes
                     </button>
                     <button
                       type="button"
                       class="btn btn-block btn-outline-secondary mt-0"
-                      :class="{active: guest.rsvpStatus === false}"
-                      @click="updateRSVPStatus(guest, false)"
+                      :class="{active: guest.rsvpStatus === 'Declined'}"
+                      @click="updateRSVPStatus(guest, 'Declined')"
                     >
                       No
                     </button>
@@ -92,10 +96,20 @@ export default {
       this.attending = status
     },
     updateRSVPStatus(guest, status) {
+      if (guest.rsvpStatus === status) {
+        guest.rsvpStatus = 'No Response'
+        return
+      }
       guest.rsvpStatus = status
     },
     submit() {
-      alert('debug submit')
+      guestService
+        .saveHousehold(this.household.id, this.household)
+        .then(() => alert('OK'))
+        .catch(err => {
+          console.error(err)
+          alert('Error')
+        })
     },
   },
   computed: {
