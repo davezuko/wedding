@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import App from './components/rsvp-app.vue'
+import {h, render} from 'preact'
+import App from './components/rsvp-app'
 
-const vm = new Vue(App)
-vm.$mount('#app')
+render(<App />, document.getElementById('app'))
