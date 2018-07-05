@@ -1836,6 +1836,10 @@ csso@~2.3.1:
     clap "^1.0.9"
     source-map "^0.5.3"
 
+csv-parse@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-2.5.0.tgz#65748997ecc3719c594622db1b9ea0e2eb7d56bb"
+
 cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
@@ -2168,6 +2172,10 @@ eslint-scope@^3.7.1:
   dependencies:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
+
+esm@^3.0.62:
+  version "3.0.62"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.62.tgz#a50a0609c685f11715e12563516e50e9e1981c4b"
 
 esprima@^2.6.0:
   version "2.7.3"
