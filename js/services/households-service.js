@@ -6,6 +6,7 @@ export function list() {
     return Promise.resolve(Object.keys(households).map(id => households[id]))
   }
 
+  throw new Error('')
   return firebase
     .database()
     .ref('/households')
