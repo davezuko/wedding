@@ -153,14 +153,16 @@ class RSVPApp extends Component {
                     Start typing your name above and we'll find your household.
                   </p>
                 )}
-                <textarea
-                  name="rsvpMessasge"
-                  className="form-control"
-                  placeholder="Feel free to leave us a message or ask any questions here..."
-                  value={this.state.rsvpMessage}
-                  onInput={this.handleInputChange}
-                  rows={3}
-                />
+                {household && (
+                  <textarea
+                    name="rsvpMessasge"
+                    className="form-control"
+                    placeholder="Feel free to leave us a message or ask any questions here..."
+                    value={this.state.rsvpMessage}
+                    onInput={this.handleInputChange}
+                    rows={3}
+                  />
+                )}
                 {household && (
                   <div className="d-flex mt-3">
                     <button type="submit" className="btn btn-primary btn-block">
