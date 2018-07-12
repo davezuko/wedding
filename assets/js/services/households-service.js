@@ -1,11 +1,6 @@
 import firebase from '../resources/firebase'
 
 export function list() {
-  // if (process.env.NODE_ENV === 'development') {
-  const households = require('../../_tmp/mock-data.json')
-  return Promise.resolve(Object.keys(households).map(id => households[id]))
-  // }
-
   return firebase
     .database()
     .ref('/households')
