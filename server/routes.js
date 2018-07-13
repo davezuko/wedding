@@ -18,8 +18,12 @@ route('GET', '/rsvp', (req, res) => res.render('rsvp'))
 
 // API
 route('GET', '/api/households', async (req, res) => {
-  const {firstName, lastName} = req.query
-  res.json(await GuestsService.findHousehold(firstName, lastName))
+  if ('firstName' in req.query && 'lastName' in req.query) {
+    const {firstName, lastName} = req.query
+    res.json(await GuestsService.findHousehold(firstName, lastName))
+    return
+  }
+  res.json(await GuestsService.list())
 })
 
 export default router
