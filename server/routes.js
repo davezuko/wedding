@@ -1,5 +1,5 @@
 import express from 'express'
-import * as HouseholdsService from './services/households-service'
+import * as GuestsService from './services/guests-service'
 
 const router = express.Router()
 const route = (method, path, handler) => {
@@ -12,10 +12,14 @@ const route = (method, path, handler) => {
   })
 }
 
-route('GET', '/', () => res.render('index'))
-route('GET', '/rsvp', () => res.render('rsvp'))
+// Views
+route('GET', '/', (req, res) => res.render('index'))
+route('GET', '/rsvp', (req, res) => res.render('rsvp'))
+
+// API
 route('GET', '/api/households', async (req, res) => {
-  res.json(await HouseholdsService.list())
+  const {firstName, lastName} = req.query
+  res.json(await GuestsService.findHousehold(firstName, lastName))
 })
 
 export default router

@@ -5,10 +5,9 @@
   "license": "MIT",
   "scripts": {
     "gulp": "gulp --gulpfile ./build/gulpfile.js --cwd .",
-    "firebase-to-csv": "node -r esm -r dotenv/config build/scripts/firebase-to-csv",
-    "csv-to-firebase": "node -r esm -r dotenv/config build/scripts/csv-to-firebase",
     "make": "yarn gulp make",
-    "start": "yarn gulp start"
+    "start": "yarn gulp start",
+    "serve": "node -r esm -r dotenv/config bin/start"
   },
   "prettier": {
     "semi": false,
@@ -39,6 +38,7 @@
     "esm": "^3.0.62",
     "express": "^4.16.3",
     "http-errors": "^1.6.3",
+    "lodash": "^4.17.10",
     "morgan": "^1.9.0",
     "pg": "^7.4.3",
     "preact": "^8.2.9",
