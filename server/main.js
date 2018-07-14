@@ -37,6 +37,13 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.use(express.static(path.join(__dirname, '../dist')))
 
 // routes
+const IS_DEV = process.env.NODE_ENV === 'development'
+app.use((req, res, next) => {
+  req.experimental = IS_DEV || 'experimental' in req.query
+  res.locals.development = IS_DEV
+  res.locals.experimental = req.experimental
+  next()
+})
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 app.use(routes)

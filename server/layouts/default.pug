@@ -38,7 +38,8 @@ html(lang="en")
             +nav-item("Our Story", "/#our-story")
             +nav-item("Venue", "/#the-venue")
             +nav-item("Registry", "/#our-registry")
-            +nav-item("RSVP", "/rsvp")
+            if experimental
+              +nav-item("RSVP", "/rsvp")
     block header
     main.container
       block content

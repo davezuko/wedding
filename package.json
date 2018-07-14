@@ -7,6 +7,8 @@
     "gulp": "gulp --gulpfile ./build/gulpfile.js --cwd .",
     "make": "yarn gulp make",
     "start": "yarn gulp start",
+    "serve:prod": "pm2 start bin/start.js --wait-ready -i max --name \"davidandjackiewedding.com\" --node-args \"-r esm -r dotenv/config\"",
+    "serve:dev": "pm2 start bin/start.js --wait-ready -i max --name \"dev.davidandjackiewedding.com\" --node-args \"-r esm -r dotenv/config\"",
     "serve": "node -r esm -r dotenv/config bin/start"
   },
   "prettier": {

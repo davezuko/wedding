@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import express from 'express'
+import createError from 'http-errors'
 import * as GuestsService from './services/guests-service'
 
 const router = express.Router()
@@ -18,8 +19,17 @@ const route = (method, path, handler) => {
 
 // Views
 // -------------------------
+const IS_DEV = process.env.NODE_ENV === 'development'
+
 route('GET', '/', (req, res) => res.render('index'))
-route('GET', '/rsvp', (req, res) => res.render('rsvp'))
+route('GET', '/rsvp', (req, res, next) => {
+  if (IS_DEV || req.query.experimental) {
+    res.render('rsvp')
+    return
+  }
+
+  next(createError(404))
+})
 
 // API
 // -------------------------
