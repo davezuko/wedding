@@ -8,6 +8,15 @@ import routes from './routes'
 const app = express()
 
 // logging
+logger.token('remote-addr', (req, res) => {
+  return (
+    req['x-real-ip'] ||
+    req.ip ||
+    req._remoteAddress ||
+    (req.connection && req.connection.remoteAddress)
+  )
+})
+
 const logs = path.resolve(__dirname, '../logs')
 if (!fs.existsSync(logs)) {
   fs.mkdirSync(logs)
