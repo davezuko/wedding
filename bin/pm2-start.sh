@@ -1,2 +1,3 @@
 #!/bin/bash
-pm2 start npm --wait-ready -i 1 --name "dev.davidandjackiewedding.com" -- run serve
+set -e
+pm2 start bin/start.js --wait-ready -i max --name "dev.davidandjackiewedding.com" --node-args "-r esm -r dotenv/config"
