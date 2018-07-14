@@ -23,7 +23,7 @@ const IS_DEV = process.env.NODE_ENV === 'development'
 
 route('GET', '/', (req, res) => res.render('index'))
 route('GET', '/rsvp', (req, res, next) => {
-  if (IS_DEV || req.query.experimental) {
+  if (req.experimental) {
     res.render('rsvp')
     return
   }

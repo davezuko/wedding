@@ -10,7 +10,7 @@ const paths = {
   },
   styles: {
     src: 'assets/css/main.css',
-    watch: 'css/**/*.css',
+    watch: 'assets/css/**/*.css',
     dest: 'dist/css',
   },
 }
