@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export function list() {
-  return axios.get('/api/households').then(res => res.data)
+  return axios.get('/api/households?rsvp=true').then(res => res.data)
 }

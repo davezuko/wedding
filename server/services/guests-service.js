@@ -8,9 +8,25 @@ function toClientRecord(record) {
 
 const pool = new Pool()
 
-export const list = async () => {
+/** Lists all households along with their guests */
+export const listHouseholds = async () => {
   const res = await pool.query('SELECT * FROM wedding.guests')
-  return res.rows
+  const guests = _.map(res.rows, toClientRecord)
+  const householdsMap = _.mapValues(
+    _.groupBy(
+      guests,
+      guest =>
+        guest.householdLeaderFirstName + '_' + guest.householdLeaderLastName
+    ),
+    guests => {
+      return {
+        householdLeaderFirstName: guests[0].householdLeaderFirstName,
+        householdLeaderLastName: guests[0].householdLeaderLastName,
+        guests,
+      }
+    }
+  )
+  return _.values(householdsMap)
 }
 
 /**
