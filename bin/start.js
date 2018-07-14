@@ -1,7 +1,7 @@
 import app from '../server/main'
 
-const server = app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000')
+const server = app.listen(process.env.PORT, () => {
+  console.log(`Server running on http://localhost:${process.env.PORT}`)
 
   if (typeof process.send === 'function') {
     console.log('Server ready')
