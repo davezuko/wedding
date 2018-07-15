@@ -50,8 +50,11 @@ function watch() {
   const gaze = require('gaze')
   const tinylr = require('tiny-lr')
 
-  gulp.watch(paths.styles.watch, styles)
+  // Start dev server
+  require('../bin/start')
 
+  // Watch for file changes
+  gulp.watch(paths.styles.watch, styles)
   gaze('dist/**/*', function() {
     this.on('changed', function(absoluteFilepath) {
       const filepath = absoluteFilepath.replace(/.*dist\//, '')

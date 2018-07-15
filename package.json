@@ -7,9 +7,7 @@
     "gulp": "gulp --gulpfile ./build/gulpfile.js --cwd .",
     "make": "NODE_ENV=production yarn gulp make",
     "start": "yarn gulp start",
-    "serve:prod": "PORT=3000 pm2 start bin/start.js --wait-ready -i max --name \"davidandjackiewedding.com\" --node-args \"-r esm -r dotenv/config\"",
-    "serve:dev": "PORT=4000 pm2 start bin/start.js --wait-ready -i max --name \"dev.davidandjackiewedding.com\" --node-args \"-r esm -r dotenv/config\"",
-    "serve": "PORT=3000 node -r esm -r dotenv/config bin/start"
+    "serve:pm2": "pm2 start bin/start.js --wait-ready -i max"
   },
   "prettier": {
     "semi": false,
