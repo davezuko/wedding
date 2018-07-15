@@ -37,10 +37,11 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.use(express.static(path.join(__dirname, '../dist')))
 
 // routes
-const IS_DEV = process.env.NODE_ENV === 'development'
+const IS_LOCAL = process.env.NODE_ENV === 'development'
+const ENABLE_EXPERIMENTAL = IS_LOCAL || process.env.ENABLE_EXPERIMENTAL
 app.use((req, res, next) => {
-  req.experimental = IS_DEV || 'experimental' in req.query
-  res.locals.development = IS_DEV
+  req.experimental = ENABLE_EXPERIMENTAL || 'experimental' in req.query
+  res.locals.development = IS_LOCAL
   res.locals.experimental = req.experimental
   next()
 })
@@ -49,7 +50,7 @@ app.set('view engine', 'pug')
 app.use(routes)
 
 // live reload
-if (process.env.NODE_ENV === 'development') {
+if (IS_LOCAL) {
   app.use(require('tiny-lr').middleware({app}))
 }
 
