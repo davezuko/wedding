@@ -8,6 +8,41 @@ function toClientRecord(record) {
 
 const pool = new Pool()
 
+/** Lists all guests */
+export const list = async () => {
+  const {rows} = await pool.query('SELECT * FROM wedding.guests')
+  const guests = _.map(rows, toClientRecord)
+  return guests
+}
+
+/** Updates a guest record */
+export const update = async (id, updates) => {
+  const {rows} = await pool.query(
+    'SELECT * FROM wedding.guests WHERE id = $1;',
+    [id]
+  )
+
+  assert.equal(rows.length, 1)
+  const guest = toClientRecord(rows[0])
+  const updatedRecord = Object.assign({}, guest, updates)
+  const res = await pool.query(
+    `
+    UPDATE wedding.guests
+    SET invitation_sent  = $2,
+        thank_you_sent = $3,
+        rsvp_status = $4
+    WHERE id = $1;
+  `,
+    [
+      id,
+      updatedRecord.invitationSent,
+      updatedRecord.thankYouSent,
+      updatedRecord.rsvpStatus,
+    ]
+  )
+  return updatedRecord
+}
+
 /** Lists all households along with their guests */
 export const listHouseholds = async () => {
   const res = await pool.query('SELECT * FROM wedding.guests')

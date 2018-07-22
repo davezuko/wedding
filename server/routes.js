@@ -30,9 +30,24 @@ route('GET', '/rsvp', (req, res, next) => {
 
   next(createError(404))
 })
+route('GET', '/admin', (req, res, next) => {
+  if (req.experimental) {
+    res.render('admin')
+    return
+  }
+  next(createError(404))
+})
 
 // API
 // -------------------------
+route('GET', '/api/guests', async (req, res) => {
+  return GuestsService.list()
+})
+
+route('PUT', '/api/guests/:id', async (req, res) => {
+  return GuestsService.update(req.params.id, req.body)
+})
+
 route('GET', '/api/households', async (req, res) => {
   // Find a household for a given guest name
   if ('firstName' in req.query && 'lastName' in req.query) {
