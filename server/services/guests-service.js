@@ -87,3 +87,6 @@ export const findHousehold = async (firstName, lastName) => {
 
   return _.map(household.rows, toClientRecord)
 }
+
+/** Handles RSVP submissions */
+export const submitRSVP = async () => {}

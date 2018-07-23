@@ -1,14 +1,14 @@
-.section-wrapper {
-  display: inline-block;
-  position: relative;
-}
-
 .rsvp {
   display: flex;
   justify-content: center;
   margin-top: 10rem;
 }
 
+.rsvp .section-wrapper {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+}
 
 .rsvp .section__header {
   color: var(--green);
@@ -19,7 +19,17 @@
   box-shadow: 0 0 65px 0 rgba(1,1,1,.12);
 }
 
-.rsvp-header {
+.guest-rsvp-fieldset {
+  padding-left: 0;
+  padding-right: 0;
+  background: none;
+}
+
+.rsvp-status-field {
+  display: flex;
+}
+
+.venue-location {
   position: absolute;
   top: 3rem;
   left: 100%;
@@ -28,4 +38,14 @@
   background: rgba(11, 202, 174, 0.2);
   border: 3px solid var(--green);
   border-left: none;
+}
+
+@media screen and (max-width: 768px) {
+  .rsvp {
+    margin-top: 2rem;
+  }
+
+  .venue-location {
+    display: none;
+  }
 }

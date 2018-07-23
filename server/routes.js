@@ -19,35 +19,22 @@ const route = (method, path, handler) => {
 
 // Views
 // -------------------------
-const IS_DEV = process.env.NODE_ENV === 'development'
-
 route('GET', '/', (req, res) => res.render('index'))
-route('GET', '/rsvp', (req, res, next) => {
-  if (req.experimental) {
-    res.render('rsvp')
-    return
-  }
-
-  next(createError(404))
-})
+route('GET', '/rsvp', (req, res) => res.render('rsvp'))
 route('GET', '/admin', (req, res, next) => {
-  if (req.experimental) {
-    res.render('admin')
+  if (!req.experimental) {
+    next(createError(404))
     return
   }
-  next(createError(404))
+  res.render('admin')
 })
 
 // API
 // -------------------------
-route('GET', '/api/guests', async (req, res) => {
-  return GuestsService.list()
-})
-
-route('PUT', '/api/guests/:id', async (req, res) => {
-  return GuestsService.update(req.params.id, req.body)
-})
-
+route('GET', '/api/guests', async (req, res) => GuestsService.list())
+route('PUT', '/api/guests/:id', async (req, res) =>
+  GuestsService.update(req.params.id, req.body)
+)
 route('GET', '/api/households', async (req, res) => {
   // Find a household for a given guest name
   if ('firstName' in req.query && 'lastName' in req.query) {
@@ -74,5 +61,8 @@ route('GET', '/api/households', async (req, res) => {
   }
   return GuestsService.listHouseholds()
 })
+route('POST', '/api/households/rsvp', async (req, res) =>
+  GuestsService.submitRSVP(req.body)
+)
 
 export default router

@@ -1,13 +1,13 @@
 import {h, Component} from 'preact'
 import cx from 'classnames'
 import * as HouseholdsService from '../../../services/households-service'
+import HouseholdAttendanceForm from './household-attendance-form'
 
 class RSVPApp extends Component {
   state = {
     firstName: '',
     lastName: '',
     households: [],
-    rsvpMessage: '',
   }
 
   componentDidMount() {
@@ -16,22 +16,15 @@ class RSVPApp extends Component {
     })
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
+  handleSubmit = household => {
+    HouseholdsService.submitRSVP(household)
   }
 
   handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
+    this.setState({[e.target.name]: e.target.value})
   }
 
-  handleRSVPStatusChange = (guest, status) => {
-    guest.rsvpStatus = guest.rsvpStatus === status ? 'No Response' : status
-    this.forceUpdate()
-  }
-
-  get household() {
+  get selectedHousehold() {
     const firstName = this.state.firstName.trim().toLowerCase()
     const lastName = this.state.lastName.trim().toLowerCase()
     if (!firstName || !lastName) return
@@ -46,71 +39,9 @@ class RSVPApp extends Component {
     })
   }
 
-  renderHousehold(household) {
-    return (
-      <div>
-        <div className="d-flex mb-3 align-items-end">
-          <h3>We Found Your Household!</h3>
-        </div>
-        <ul className="list-group list-group-flush mb-3">
-          {household.guests.map((guest, idx) => (
-            <li
-              key={idx}
-              className="list-group-item pl-0 pr-0"
-              style={{background: 'none'}}
-            >
-              <div className="row">
-                <div className="col-3 d-flex">
-                  <button
-                    type="button"
-                    className={cx('btn btn-block mr-2', {
-                      active: guest.rsvpStatus === 'Accepted',
-                      'btn-outline-primary': guest.rsvpStatus === 'Accepted',
-                      'btn-outline-secondary': guest.rsvpStatus !== 'Accepted',
-                    })}
-                    onClick={() =>
-                      this.handleRSVPStatusChange(guest, 'Accepted')
-                    }
-                  >
-                    Yes
-                  </button>
-                  <button
-                    type="button"
-                    className={cx('btn btn-outline-secondary btn-block mt-0', {
-                      active: guest.rsvpStatus === 'Declined',
-                    })}
-                    onClick={() =>
-                      this.handleRSVPStatusChange(guest, 'Declined')
-                    }
-                  >
-                    No
-                  </button>
-                </div>
-                <div className="col-5">
-                  <span>
-                    {guest.firstName} {guest.lastName}
-                  </span>
-                </div>
-                <div className="col">
-                  {guest.rsvpStatus === 'Accepted' && (
-                    <select name="mealChoice" class="form-control">
-                      <option value="">Meal Choice</option>
-                      <option value="chicken">Chicken</option>
-                      <option value="steak">Steak</option>
-                    </select>
-                  )}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-
   render() {
     const {firstName, lastName} = this.state
-    const household = this.household
+    const selectedHousehold = this.selectedHousehold
 
     return (
       <div className="rsvp">
@@ -118,76 +49,79 @@ class RSVPApp extends Component {
           <section className="section my-card">
             <h2 className="section__header">Wedding RSVP</h2>
             <div className="section__content">
-              <form onSubmit={this.handleSubmit}>
-                <div className="mb-4">
-                  <div className="row">
-                    <div className="form-group col">
-                      <label for="exampleInputEmail1">First Name</label>
-                      <input
-                        type="text"
-                        name="firstName"
-                        className="form-control"
-                        placeholder="Your first name"
-                        autofocus
-                        value={firstName}
-                        onInput={this.handleInputChange}
-                      />
-                    </div>
-                    <div className="form-group col">
-                      <label>Last Name</label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        className="form-control"
-                        placeholder="Your last name"
-                        value={lastName}
-                        onInput={this.handleInputChange}
-                      />
-                    </div>
-                  </div>
-                </div>
-                {household ? (
-                  this.renderHousehold(household)
-                ) : (
-                  <p className="text-center">
-                    Start typing your name above and we'll find your household.
-                  </p>
-                )}
-                {household && (
-                  <textarea
-                    name="rsvpMessasge"
+              <div className="row mb-3">
+                <div className="form-group col-12 col-sm-6">
+                  <label htmlFor="firstName">Your First Name</label>
+                  <input
+                    id="firstName"
+                    type="text"
+                    name="firstName"
                     className="form-control"
-                    placeholder="Feel free to leave us a message or ask any questions here..."
-                    value={this.state.rsvpMessage}
+                    placeholder="Your first name"
+                    value={firstName}
                     onInput={this.handleInputChange}
-                    rows={3}
+                    autofocus
                   />
-                )}
-                {household && (
-                  <div className="d-flex mt-3">
-                    <button type="submit" className="btn btn-primary btn-block">
-                      Submit
-                    </button>
+                </div>
+                <div className="form-group col-12 col-sm-6">
+                  <label htmlFor="lastName">Your Last Name</label>
+                  <input
+                    id="lastName"
+                    type="text"
+                    name="lastName"
+                    className="form-control"
+                    placeholder="Your last name"
+                    value={lastName}
+                    onInput={this.handleInputChange}
+                  />
+                </div>
+              </div>
+              {selectedHousehold ? (
+                <div>
+                  <div className="mb-3">
+                    <h3>We Found Your Household!</h3>
+                    <p>
+                      Let us know who's coming by clicking <strong>Yes</strong>{' '}
+                      or <strong>No</strong> next to each guest below. For those
+                      attending, select the desired meal. When you are done,
+                      press <strong>Submit</strong> to save your information.
+                    </p>
+                    <p>
+                      Heads up! You are welcome to come back to change your
+                      selections up until August 31, 2018.
+                    </p>
                   </div>
-                )}
-                <hr />
+                  <HouseholdAttendanceForm
+                    household={selectedHousehold}
+                    onSubmit={this.handleSubmit}
+                  />
+                </div>
+              ) : (
                 <p className="text-center">
-                  Having trouble? Feel free to send us an email at{' '}
-                  <a href="mailto:rsvp@davidandjackiewedding.com">
-                    rsvp@davidandjackiewedding.com
-                  </a>
+                  Start typing your name above. We'll automatically find your
+                  household and show your guest list below.
+                  <br />
                 </p>
-              </form>
+              )}
+
+              <hr />
+              <p className="text-center">
+                Having trouble? Try entering the name of somebody else in your
+                household. Alternatively, send us an email at{' '}
+                <a href="mailto:rsvp@davidandjackiewedding.com">
+                  rsvp@davidandjackiewedding.com
+                </a>
+              </p>
             </div>
           </section>
-          <div className="rsvp-header">
+          <aside className="venue-location">
             <h3>Great Oaks Country Club</h3>
             <p>
               777 Great Oaks Blvd<br />
               Rochester, MI 48307<br />
               Saturday, September 22, 2018
             </p>
-          </div>
+          </aside>
         </div>
       </div>
     )
