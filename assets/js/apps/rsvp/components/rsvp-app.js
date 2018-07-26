@@ -29,7 +29,7 @@ class RSVPApp extends Component {
     const lastName = this.state.lastName.trim().toLowerCase()
     if (!firstName || !lastName) return
 
-    return this.state.households.find(hh => {
+    const matchingHouseholds = this.state.households.filter(hh => {
       return hh.guests.find(guest => {
         return (
           guest.firstName.toLowerCase().includes(firstName) &&
@@ -37,6 +37,9 @@ class RSVPApp extends Component {
         )
       })
     })
+    if (matchingHouseholds.length === 1) {
+      return matchingHouseholds[0]
+    }
   }
 
   render() {
