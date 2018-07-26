@@ -24,27 +24,43 @@ class RSVPApp extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  get selectedHousehold() {
+  get matchingHouseholds() {
     const firstName = this.state.firstName.trim().toLowerCase()
     const lastName = this.state.lastName.trim().toLowerCase()
-    if (!firstName || !lastName) return
 
+    if (!lastName) return []
+
+    // Search by last name first, since it has the highest likelyhood of
+    // being unique.
     const matchingHouseholds = this.state.households.filter(hh => {
       return hh.guests.find(guest => {
-        return (
-          guest.firstName.toLowerCase().includes(firstName) &&
-          guest.lastName.toLowerCase().includes(lastName)
-        )
+        return guest.lastName.toLowerCase().indexOf(lastName) !== -1
       })
     })
+
+    // No last name match, exit early
+    if (!matchingHouseholds.length) return []
+
+    // Last name matched exactly one household, so we don't have to check the
+    // first name.
     if (matchingHouseholds.length === 1) {
-      return matchingHouseholds[0]
+      return matchingHouseholds
     }
+
+    // More than one household matched this last name, so take the first name
+    // into consideration.
+    return matchingHouseholds.filter(hh => {
+      return hh.guests.find(guest => {
+        return guest.firstName.toLowerCase().indexOf(firstName) !== -1
+      })
+    })
   }
 
   render() {
     const {firstName, lastName} = this.state
-    const selectedHousehold = this.selectedHousehold
+    const matchingHouseholds = this.matchingHouseholds
+    const selectedHousehold =
+      matchingHouseholds.length === 1 ? matchingHouseholds[0] : null
 
     return (
       <div className="rsvp">
