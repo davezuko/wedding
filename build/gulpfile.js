@@ -2,6 +2,7 @@ require('dotenv').config()
 const path = require('path')
 const gulp = require('gulp')
 const when = require('gulp-if')
+const rev = require('gulp-rev')
 
 const paths = {
   scripts: {
@@ -15,8 +16,10 @@ const paths = {
   },
 }
 
+const IS_PROD = process.env.NODE_ENV === 'production'
+
 function plumber() {
-  return when(process.env.NODE_ENV !== 'production', require('gulp-plumber')())
+  return when(!IS_PROD, require('gulp-plumber')())
 }
 
 function clean() {
@@ -30,7 +33,10 @@ function styles() {
     .src(paths.styles.src)
     .pipe(plumber())
     .pipe(postcss())
+    .pipe(when(IS_PROD, rev()))
     .pipe(gulp.dest(paths.styles.dest))
+    .pipe(when(IS_PROD, rev.manifest()))
+    .pipe(when(IS_PROD, gulp.dest(paths.styles.dest)))
 }
 
 function scripts() {
@@ -43,7 +49,10 @@ function scripts() {
     .pipe(plumber())
     .pipe(named())
     .pipe(webpackStream(require('./webpack.config'), webpack))
+    .pipe(when(IS_PROD, rev()))
     .pipe(gulp.dest(paths.scripts.dest))
+    .pipe(when(IS_PROD, rev.manifest()))
+    .pipe(when(IS_PROD, gulp.dest(paths.scripts.dest)))
 }
 
 function watch() {
@@ -63,5 +72,6 @@ function watch() {
   })
 }
 
-exports.make = gulp.series(clean, gulp.parallel(styles, scripts))
-exports.start = gulp.series(clean, styles, gulp.parallel(scripts, watch))
+exports.clean = clean
+exports.make = gulp.series(gulp.parallel(styles, scripts))
+exports.start = gulp.series(styles, gulp.parallel(scripts, watch))

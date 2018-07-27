@@ -6,4 +6,5 @@ block content
   #app
 
 block append scripts
-  script(src="/js/apps/rsvp/main.js?v=3")
+  - const rsvpBundle = getHashedAssetPath('/js/apps/rsvp/main.js')
+  script(src=rsvpBundle)

@@ -29,7 +29,8 @@ html(lang="en")
     meta(name="msapplication-TileColor", content="#ffffff")
     meta(name="msapplication-TileImage", content="/ms-icon-144x144.png")
     meta(name="theme-color", content="#ffffff")
-    link(rel="stylesheet" href="/css/main.css")
+    - const mainCSS = getHashedAssetPath('/css/main.css')
+    link(rel="stylesheet" href=`${mainCSS}`)
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous")
   body
     nav.navbar.navbar-expand-sm.navbar-light
@@ -40,8 +41,7 @@ html(lang="en")
             +nav-item("Our Story", "/#our-story")
             +nav-item("Venue", "/#the-venue")
             +nav-item("Registry", "/#our-registry")
-            if experimental
-              +nav-item("RSVP", "/rsvp")
+            +nav-item("RSVP", "/rsvp")
     block header
     main.container
       block content

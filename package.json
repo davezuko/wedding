@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "gulp": "gulp --gulpfile ./build/gulpfile.js --cwd .",
+    "clean": "yarn gulp clean",
     "make": "NODE_ENV=production yarn gulp make",
     "start": "yarn gulp start",
     "serve:pm2": "pm2 start bin/start.js --wait-ready -i max"
@@ -58,6 +59,7 @@
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^7.0.1",
+    "gulp-rev": "^8.1.1",
     "postcss": "^6.0.22",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
