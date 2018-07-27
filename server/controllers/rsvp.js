@@ -1,5 +1,4 @@
 import Households from '../models/households'
-import createError from 'http-errors'
 
 class RSVPController {
   constructor() {
@@ -8,10 +7,16 @@ class RSVPController {
     this.listHouseholds = this.listHouseholds.bind(this)
   }
 
+  /**
+   * Renders the index route.
+   */
   async index(req, res, next) {
     return res.render('rsvp')
   }
 
+  /**
+   * Handles RSVP form submissions.
+   */
   async submit(req, res, next) {
     try {
       const {household, comments} = req.body
@@ -22,6 +27,9 @@ class RSVPController {
     }
   }
 
+  /**
+   * Returns the list of households invited to the wedding.
+   */
   async listHouseholds(req, res, next) {
     try {
       res.json(await Households.list())

@@ -1,6 +1,6 @@
 import _ from 'lodash'
-import {h, Component} from 'preact'
 import cx from 'classnames'
+import {h, Component} from 'preact'
 import * as HouseholdsService from '../../../services/households-service'
 
 const DINNER_OPTIONS = ['Steak', 'Salmon', 'Vegetarian']

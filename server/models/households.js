@@ -2,12 +2,18 @@ import _ from 'lodash'
 import Model from './model'
 
 class Households extends Model {
+  /**
+   * Transforms a DB record to a client (JavaScript) record
+   *
+   * @param {object} dbRecord - the record from the database
+   * @returns {object} the JavaScript-friendly record
+   */
   toClientRecord(dbRecord) {
     return _.mapKeys(dbRecord, (value, key) => _.camelCase(key))
   }
 
   /**
-   * Lists all households
+   * Lists all households.
    *
    * @returns {promise}
    */
@@ -42,7 +48,7 @@ class Households extends Model {
   }
 
   /**
-   * Saves a household
+   * Saves a household.
    *
    * @param {object} household - the household to save
    * @param {string} comments - any user-provided comments

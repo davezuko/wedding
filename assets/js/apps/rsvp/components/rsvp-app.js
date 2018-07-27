@@ -1,5 +1,5 @@
-import {h, Component} from 'preact'
 import cx from 'classnames'
+import {h, Component} from 'preact'
 import * as HouseholdsService from '../../../services/households-service'
 import HouseholdAttendanceForm from './household-attendance-form'
 import SuccessView from './success-view'
@@ -18,22 +18,39 @@ class RSVPApp extends Component {
     })
   }
 
+  /**
+   * Handler for after the form has been successfully submitted. Used to
+   * transition the UI from the form view to success view.
+   */
   handleSubmitted = () => {
     this.setState({submitted: true})
   }
 
+  /**
+   * Returns the user to the form view from the success view.
+   */
   handleReturnToForm = () => {
     this.setState({submitted: false})
   }
 
+  /**
+   * Change event handler for form controls.
+   */
   handleInputChange = e => {
     this.setState({[e.target.name]: e.target.value})
   }
 
+  /**
+   * Returns the list of all households matching the first and last name
+   * provided by the user.
+   *
+   * @returns {Array<object>}
+   */
   get matchingHouseholds() {
     const firstName = this.state.firstName.trim().toLowerCase()
     const lastName = this.state.lastName.trim().toLowerCase()
 
+    // Last name is required to match a household.
     if (!lastName) return []
 
     // Search by last name first, since it has the highest likelyhood of
