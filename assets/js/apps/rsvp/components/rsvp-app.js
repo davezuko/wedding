@@ -6,8 +6,8 @@ import SuccessView from './success-view'
 
 class RSVPApp extends Component {
   state = {
-    firstName: 'Mark',
-    lastName: 'Kutcher',
+    firstName: '',
+    lastName: '',
     households: [],
     submitted: false,
   }
