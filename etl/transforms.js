@@ -1,7 +1,7 @@
 export function fromGoogleSheets(record) {
   return {
     first_name: record['First Name'],
-    last_name: record['Last Name'],
+    last_name: record['Last Name'] || '',
     address: null,
     phone: null,
     email: null,

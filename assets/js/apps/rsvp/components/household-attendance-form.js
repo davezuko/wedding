@@ -37,7 +37,6 @@ const RSVPStatusField = ({onChange, value}) => {
 
 class HouseholdAttendanceForm extends Component {
   state = {
-    comments: this.props.household.guests[0].rsvpMessage || '',
     isSubmitting: false,
   }
 
@@ -45,13 +44,12 @@ class HouseholdAttendanceForm extends Component {
     e.preventDefault()
 
     const {household} = this.props
-    const {comments} = this.state
 
     this.setState({isSubmitting: true})
-    HouseholdsService.submitRSVP({household, comments})
+    HouseholdsService.submitRSVP(household, this.comments)
       .then(res => {
         this.setState({isSubmitting: false})
-        this.props.onSubmitted()
+        this.props.onSubmitted(res.data)
       })
       .catch(err => {
         // TODO: show some error
@@ -67,6 +65,21 @@ class HouseholdAttendanceForm extends Component {
   handleMealChange = (guest, meal) => {
     guest.mealOption = meal || null
     this.forceUpdate()
+  }
+
+  handleInputChange = e => {
+    switch (e.target.name) {
+      case 'comments':
+        this.props.household.guests[0].rsvpMessage = e.target.value
+        this.forceUpdate()
+        break
+      default:
+      // noop
+    }
+  }
+
+  get comments() {
+    return this.props.household.guests[0].rsvpMessage || ''
   }
 
   renderGuestField = guest => {
@@ -110,7 +123,7 @@ class HouseholdAttendanceForm extends Component {
   }
 
   render() {
-    const {household, comments} = this.props
+    const {household} = this.props
     const {isSubmitting} = this.state
 
     return (
@@ -121,8 +134,8 @@ class HouseholdAttendanceForm extends Component {
         <textarea
           name="comments"
           className="form-control mb-3"
-          placeholder="Feel free to leave us a note or ask any questions here..."
-          value={comments}
+          placeholder="Questions? Did we miss someone? Feel free to leave us a note here..."
+          value={this.comments}
           onInput={this.handleInputChange}
           rows={3}
         />
