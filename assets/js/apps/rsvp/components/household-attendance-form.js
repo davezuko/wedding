@@ -5,39 +5,58 @@ import * as HouseholdsService from '../../../services/households-service'
 
 const DINNER_OPTIONS = ['Steak', 'Salmon', 'Vegetarian']
 
-const RSVPStatusField = ({onChange, value}) => (
-  <div className="rsvp-status-field">
-    <button
-      type="button"
-      className={cx('btn btn-block mr-2', {
-        active: value === 'Accepted',
-        'btn-outline-primary': value === 'Accepted',
-        'btn-outline-secondary': value !== 'Accepted',
-      })}
-      onClick={() => onChange('Accepted')}
-    >
-      Yes
-    </button>
-    <button
-      type="button"
-      className={cx('btn btn-outline-secondary btn-block mt-0', {
-        active: value === 'Declined',
-      })}
-      onClick={() => onChange('Declined')}
-    >
-      No
-    </button>
-  </div>
-)
+const RSVPStatusField = ({onChange, value}) => {
+  const declined = value === false
+  const accepted = value === true
+
+  return (
+    <div className="rsvp-status-field">
+      <button
+        type="button"
+        className={cx('btn btn-block mr-2', {
+          active: accepted,
+          'btn-outline-primary': accepted,
+          'btn-outline-secondary': !accepted,
+        })}
+        onClick={() => onChange(true)}
+      >
+        Yes
+      </button>
+      <button
+        type="button"
+        className={cx('btn btn-outline-secondary btn-block mt-0', {
+          active: declined,
+        })}
+        onClick={() => onChange(false)}
+      >
+        No
+      </button>
+    </div>
+  )
+}
 
 class HouseholdAttendanceForm extends Component {
   state = {
-    rsvpMessage: '',
+    comments: this.props.household.guests[0].rsvpMessage || '',
+    isSubmitting: false,
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    this.props.onSubmit(this.props.household)
+
+    const {household} = this.props
+    const {comments} = this.state
+
+    this.setState({isSubmitting: true})
+    HouseholdsService.submitRSVP({household, comments})
+      .then(res => {
+        this.setState({isSubmitting: false})
+        this.props.onSubmitted()
+      })
+      .catch(err => {
+        // TODO: show some error
+        this.setState({isSubmitting: false})
+      })
   }
 
   handleRSVPStatusChange = (guest, status) => {
@@ -51,14 +70,15 @@ class HouseholdAttendanceForm extends Component {
   }
 
   renderGuestField = guest => {
-    const isAttending = guest.rsvpStatus === 'Accepted'
+    const isAttending = guest.rsvpStatus === true
+    console.log(guest)
 
     return (
       <li key={guest.id} className="list-group-item guest-rsvp-fieldset">
         <div className="row">
           <div className="col col-sm-3">
             <RSVPStatusField
-              value={guest.rsvpStatus}
+              value={isAttending}
               onChange={status => this.handleRSVPStatusChange(guest, status)}
             />
           </div>
@@ -72,7 +92,6 @@ class HouseholdAttendanceForm extends Component {
                 <select
                   name="mealChoice"
                   className="form-control"
-                  required
                   value={guest.mealOption}
                   onChange={e => this.handleMealChange(guest, e.target.value)}
                 >
@@ -92,7 +111,8 @@ class HouseholdAttendanceForm extends Component {
   }
 
   render() {
-    const {household} = this.props
+    const {household, comments} = this.props
+    const {isSubmitting} = this.state
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -100,15 +120,25 @@ class HouseholdAttendanceForm extends Component {
           {_.map(household.guests, this.renderGuestField)}
         </ul>
         <textarea
-          name="rsvpMessasge"
+          name="comments"
           className="form-control mb-3"
-          placeholder="Feel free to leave us a message or ask any questions here..."
-          value={this.state.rsvpMessage}
+          placeholder="Feel free to leave us a note or ask any questions here..."
+          value={comments}
           onInput={this.handleInputChange}
           rows={3}
         />
-        <button type="submit" className="btn btn-primary btn-block">
-          Submit
+        <button
+          type="submit"
+          className="btn btn-primary btn-block"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <span>
+              <i className="fas fa-spinner fa-spin" />&nbsp;&nbsp;Submitting...
+            </span>
+          ) : (
+            'Submit'
+          )}
         </button>
       </form>
     )

@@ -1,3 +1,22 @@
+export function fromGoogleSheets(record) {
+  return {
+    first_name: record['First Name'],
+    last_name: record['Last Name'],
+    address: null,
+    phone: null,
+    email: null,
+    notes: null,
+    gift_received: null,
+    thank_you_sent: null,
+    meal_option: null,
+    rsvp_status: null,
+    rsvp_message: null,
+    invitation_sent: record['Invitation Done?'] === 'Yes',
+    household_leader_first_name: record['Household Leader'].split(' ')[0],
+    household_leader_last_name: record['Household Leader'].split(' ')[1],
+  }
+}
+
 export function fromTheKnot(record) {
   return {
     first_name: record['First Name'],

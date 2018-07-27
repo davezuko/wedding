@@ -5,7 +5,5 @@ export function list() {
 }
 
 export function submitRSVP(household) {
-  alert('Submissions do not work yet!')
-  return Promise.resolve()
-  return axios.post('/api/households/rsvp', household).then(res => res.data)
+  return axios.post('/api/rsvp', household)
 }

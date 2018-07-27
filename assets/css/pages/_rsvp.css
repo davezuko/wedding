@@ -40,12 +40,15 @@
   border-left: none;
 }
 
+
+@media screen and (max-width: 1300px) {
+  .venue-location {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .rsvp {
     margin-top: 2rem;
-  }
-
-  .venue-location {
-    display: none;
   }
 }
