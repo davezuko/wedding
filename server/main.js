@@ -1,9 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 import express from 'express'
-import logger from 'morgan'
+import morgan from 'morgan'
 import createError from 'http-errors'
 import {getHashedAssetPath} from './utils/assets'
+import logger from './utils/logger'
 
 // environment flags
 const IS_LOCAL = process.env.NODE_ENV === 'development'
@@ -12,7 +13,7 @@ const IS_LOCAL = process.env.NODE_ENV === 'development'
 const app = express()
 
 // logging
-logger.token('remote-addr', (req, res) => {
+morgan.token('remote-addr', (req, res) => {
   return (
     req['x-real-ip'] ||
     req.ip ||
@@ -22,12 +23,9 @@ logger.token('remote-addr', (req, res) => {
 })
 
 const logs = path.resolve(__dirname, '../logs')
-if (!fs.existsSync(logs)) {
-  fs.mkdirSync(logs)
-}
-app.use(logger('dev'))
+app.use(morgan('dev'))
 app.use(
-  logger('combined', {
+  morgan('combined', {
     stream: fs.createWriteStream(path.resolve(logs, 'access.log'), {
       flags: 'a',
     }),
@@ -63,7 +61,7 @@ app.use((req, res, next) => {
 // error handler
 app.use((err, req, res, next) => {
   res.locals.error = req.app.get('env') === 'development' ? err : {}
-  console.error(err)
+  logger.error(err)
   res.status(err.status || 500)
   res.render('error')
 })

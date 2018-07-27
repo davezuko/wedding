@@ -1,4 +1,5 @@
 import Households from '../models/households'
+import logger from '../utils/logger'
 
 class RSVPController {
   constructor() {
@@ -23,6 +24,7 @@ class RSVPController {
       await Households.save(household, comments)
       res.json(household)
     } catch (e) {
+      logger.error(`Error saving RSVP submission: ${e.message}`)
       next(e)
     }
   }
