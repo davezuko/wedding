@@ -71,14 +71,13 @@ class HouseholdAttendanceForm extends Component {
 
   renderGuestField = guest => {
     const isAttending = guest.rsvpStatus === true
-    console.log(guest)
 
     return (
       <li key={guest.id} className="list-group-item guest-rsvp-fieldset">
         <div className="row">
           <div className="col col-sm-3">
             <RSVPStatusField
-              value={isAttending}
+              value={guest.rsvpStatus}
               onChange={status => this.handleRSVPStatusChange(guest, status)}
             />
           </div>
