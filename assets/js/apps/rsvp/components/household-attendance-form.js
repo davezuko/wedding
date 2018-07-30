@@ -95,7 +95,9 @@ class HouseholdAttendanceForm extends Component {
             />
           </div>
           <div className="col">
-            {guest.firstName} {guest.lastName}
+            {guest.firstName === 'Guest'
+              ? 'Guest'
+              : `${guest.firstName} ${guest.lastName}`}
           </div>
           <div className="col-12 col-sm-4">
             {isAttending && (
