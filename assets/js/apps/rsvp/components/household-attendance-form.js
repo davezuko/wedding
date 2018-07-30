@@ -3,7 +3,7 @@ import cx from 'classnames'
 import {h, Component} from 'preact'
 import * as HouseholdsService from '../../../services/households-service'
 
-const DINNER_OPTIONS = ['Steak', 'Salmon', 'Vegetarian']
+const DINNER_OPTIONS = ['Steak', 'Salmon', 'Vegetarian', 'Kid Meal']
 
 const RSVPStatusField = ({onChange, value}) => {
   const declined = value === false
