@@ -52,7 +52,8 @@ class HouseholdAttendanceForm extends Component {
         this.props.onSubmitted(res.data)
       })
       .catch(err => {
-        // TODO: show some error
+        // TODO: show a real error
+        alert('Something went wrong while submitting the form')
         this.setState({isSubmitting: false})
       })
   }
@@ -136,7 +137,7 @@ class HouseholdAttendanceForm extends Component {
         <textarea
           name="comments"
           className="form-control mb-3"
-          placeholder="Questions? Did we miss someone? Feel free to leave us a note here..."
+          placeholder="Questions? Did we miss someone? Just want to leave a note?"
           value={this.comments}
           onInput={this.handleInputChange}
           rows={3}
