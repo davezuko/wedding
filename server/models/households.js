@@ -62,7 +62,8 @@ class Households extends Model {
         UPDATE wedding.guests
         SET rsvp_status = $2,
             meal_option = $3,
-            rsvp_message = $4
+            rsvp_message = $4,
+            updated_at = Now()
         WHERE id = $1;
         `,
           [guest.id, guest.rsvpStatus, guest.mealOption, comments]
