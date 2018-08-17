@@ -91,7 +91,7 @@ mixin hotel-fact(label, value)
 
 mixin where-to-stay()
   +section("Where to Stay")
-      .hotel.mb-5
+      .hotel
         h3
           a(href="https://www.royalparkhotel.net/") Royal Park Hotel
         hr
@@ -107,25 +107,6 @@ mixin where-to-stay()
             p Mention Kutcher/Zukowski wedding when booking.
           .d-none.d-md-block.col-md-4
             img.img-fluid.img-thumbnail(src="/images/royal-park-hotel.jpg" alt="Royal Park Hotel in Rochester, MI" title="Royal Park Hotel in Rochester, MI")
-      .hotel
-        h3.text-right
-          a(href="https://www.crowneplaza.com/redirect?path=hd&brandCode=CP&localeCode=en&regionCode=1&hotelCode=dttah&_PMID=99801505&GPC=KZW&viewfullsite=true" target="_blank" title="Book online" rel="noreferrer") Crowne Plaza Auburn Hills
-        hr
-        .row
-          .d-none.d-md-block.col-4
-            img.img-fluid.img-thumbnail(src="/images/crowne-plaza.jpg" alt="Crowne Plaza Hotel in Auburn Hills, MI" title="Crowne Plaza Hotel in Auburn Hills, MI")
-          .col-12.col-md-8
-            dl.row.no-gutters
-              +hotel-fact("Rate:", "$119/night")
-              +hotel-fact("Distance:", "6.2 miles")
-              +hotel-fact("Address:", "1500 N Opdyke Rd, Auburn Hills, MI 48326")
-              dt.col-4 Phone:
-              dd.col-8
-                a(href="tel:1-248-363-4550") (248) 363-4550
-            p
-              a(href="https://www.crowneplaza.com/redirect?path=hd&brandCode=CP&localeCode=en&regionCode=1&hotelCode=dttah&_PMID=99801505&GPC=KZW&viewfullsite=true" target="_blank" title="Book online" rel="noreferrer")
-                | Click here to book online,
-              |  or mention Kutcher/Zukowski wedding when calling.
 
 //- Our Registry
 //- ------------------------------------
