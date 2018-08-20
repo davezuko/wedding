@@ -24,8 +24,16 @@ class SuccessView extends Component {
                 to come back any time between now and August 31, 2018 to update
                 your selections.
               </p>
+              <h3 className="mt-4">While You're at It... Request a Song</h3>
               <p>
-                To return to the homepage, <a href="/">click here</a>.
+                While you're here, how about requesting a song at the wedding?{' '}
+                <a href="http://my.elysiumexp.com/kutcher-zukowski-requests.php">
+                  Click here
+                </a>{' '}
+                to visit our DJ's song request form to submit a recommendation.
+              </p>
+              <p className="mt-4">
+                All finished? <a href="/">Return to the homepage</a>.
               </p>
             </div>
           </section>
