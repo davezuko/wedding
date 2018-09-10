@@ -103,6 +103,7 @@ class RSVPApp extends Component {
               value={firstName}
               onInput={this.handleInputChange}
               autofocus
+              disabled
             />
           </div>
           <div className="form-group col-12 col-sm-6">
@@ -115,44 +116,19 @@ class RSVPApp extends Component {
               placeholder="Your last name"
               value={lastName}
               onInput={this.handleInputChange}
+              disabled
             />
           </div>
         </div>
-        {selectedHousehold ? (
-          <div>
-            <div className="mb-3">
-              <h3>We Found Your Household!</h3>
-              <p>
-                Let us know who's coming by selecting <strong>Yes</strong> or{' '}
-                <strong>No</strong> next to each guest below. If you don't know
-                yet, you can leave it blank and come back later.
-              </p>
-              <p>
-                For those attending, select the desired meal. When you are done,
-                press <strong>Submit</strong> to save your information. You are
-                welcome to come back to change your selections until August 31,
-                2018.
-              </p>
-            </div>
-            <HouseholdAttendanceForm
-              household={selectedHousehold}
-              onSubmitted={this.handleSubmitted}
-            />
-          </div>
-        ) : (
-          <p className="text-center">
-            Start typing your name above. We'll automatically find your
-            household and show your guest list below.
+        <div className="text-center">
+          <p>
+            The RSVP deadline has passed.<br />
+            Need to get a hold of us? Send us an email at{' '}
+            <a href="mailto:rsvp@davidandjackiewedding.com">
+              rsvp@davidandjackiewedding.com
+            </a>
           </p>
-        )}
-        <hr />
-        <p className="text-center">
-          Having trouble? Try entering the name of somebody else in your
-          household. Alternatively, send us an email at{' '}
-          <a href="mailto:rsvp@davidandjackiewedding.com">
-            rsvp@davidandjackiewedding.com
-          </a>
-        </p>
+        </div>
       </div>
     )
   }
