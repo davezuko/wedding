@@ -16,3 +16,13 @@
     margin-bottom: 3rem;
   }
 }
+
+.event-schedule dt,
+.event-schedule dd {
+  display: inline-block;
+}
+
+.event-schedule dt {
+  font-weight: bold;
+  margin: 0 1rem 0 0;
+}

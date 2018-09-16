@@ -86,11 +86,32 @@ mixin the-venue()
       strong Dress Code: Cocktail Attire.
       br
       | The ceremony will begin at 5:30pm followed by a cocktail hour, dinner, and dancing. Please keep in mind that our ceremony is currently scheduled to take place outside.
-    p
-      strong Have a song you'd like to hear during the party?
+
+//- Event Schedule
+//- ------------------------------------
+mixin event-schedule()
+  +section("Event Schedule")
+    dl.event-schedule
+      dt 5:30pm:
+      dd Ceremony begins!
       br
-      a(href="https://docs.google.com/forms/d/e/1FAIpQLScMVHypUmhxSmW8yftQIs30C-KwGAKER8xjGSTeF0Levf2esQ/viewform") Click here
-      |  to visit our DJ's request form to let us know.
+      dt 6:00pm:
+      dd Reception begins with cocktail hour.
+      br
+      dt 7:00pm:
+      dd Grand entrace and cake cutting.
+      br
+      dt 7:15pm:
+      dd Toasts by family and friends.
+      br
+      dt 7:30pm:
+      dd Dinner is served.
+      br
+      dt 8:45pm:
+      dd First dance.
+      br
+      dt 11:50pm:
+      dd Last song of the night. Thanks for coming!
 
 //- Where to Stay
 //- ------------------------------------
@@ -155,6 +176,7 @@ block content
   +our-story()
   +photos()
   +the-venue()
+  +event-schedule()
   +wedding-party()
   +where-to-stay()
   +our-registry()
